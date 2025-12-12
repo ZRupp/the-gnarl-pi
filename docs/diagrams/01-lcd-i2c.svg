@@ -1,0 +1,251 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <style>
+      .label { font-family: 'Courier New', monospace; font-size: 12px; fill: #333; }
+      .label-small { font-family: 'Courier New', monospace; font-size: 10px; fill: #666; }
+      .title { font-family: 'Arial', sans-serif; font-size: 18px; font-weight: bold; fill: #222; }
+      .subtitle { font-family: 'Arial', sans-serif; font-size: 12px; fill: #555; }
+      .pin-label { font-family: 'Courier New', monospace; font-size: 9px; fill: #fff; text-anchor: middle; }
+      .wire-label { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: bold; }
+    </style>
+    <!-- Pin hole pattern -->
+    <pattern id="pinHoles" width="20" height="10" patternUnits="userSpaceOnUse">
+      <circle cx="5" cy="5" r="3" fill="#333"/>
+      <circle cx="15" cy="5" r="3" fill="#333"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f5f5f0"/>
+
+  <!-- Title -->
+  <text x="400" y="35" class="title" text-anchor="middle">LCD Display (I2C 1602A) Wiring</text>
+  <text x="400" y="55" class="subtitle" text-anchor="middle">The Gnarl Pi - Diagram 1 of 5</text>
+
+  <!-- Raspberry Pi Board -->
+  <g transform="translate(50, 120)">
+    <!-- Board outline -->
+    <rect x="0" y="0" width="280" height="200" rx="8" fill="#2d5016" stroke="#1a3009" stroke-width="2"/>
+
+    <!-- Board label -->
+    <text x="140" y="25" class="label" text-anchor="middle" fill="#98c379">RASPBERRY PI 3</text>
+
+    <!-- GPIO Header background -->
+    <rect x="180" y="40" width="80" height="150" rx="2" fill="#1a1a1a"/>
+
+    <!-- GPIO Pin rows - Left side (odd pins) -->
+    <g transform="translate(190, 50)">
+      <!-- Pin 1 - 3V3 -->
+      <circle cx="0" cy="0" r="5" fill="#ff6b6b"/>
+      <text x="-15" y="4" class="label-small" text-anchor="end">3V3</text>
+      <text x="0" y="3" class="pin-label">1</text>
+
+      <!-- Pin 3 - GPIO2 (SDA) - ACTIVE -->
+      <circle cx="0" cy="18" r="6" fill="#f4d03f" stroke="#c9a227" stroke-width="2"/>
+      <text x="-15" y="22" class="label-small" text-anchor="end" fill="#c9a227" font-weight="bold">SDA</text>
+      <text x="0" y="21" class="pin-label" fill="#333">3</text>
+
+      <!-- Pin 5 - GPIO3 (SCL) - ACTIVE -->
+      <circle cx="0" cy="36" r="6" fill="#27ae60" stroke="#1e8449" stroke-width="2"/>
+      <text x="-15" y="40" class="label-small" text-anchor="end" fill="#1e8449" font-weight="bold">SCL</text>
+      <text x="0" y="39" class="pin-label" fill="#fff">5</text>
+
+      <!-- Pin 7 -->
+      <circle cx="0" cy="54" r="5" fill="#555"/>
+      <text x="0" y="57" class="pin-label">7</text>
+
+      <!-- Pin 9 - GND -->
+      <circle cx="0" cy="72" r="5" fill="#333"/>
+      <text x="0" y="75" class="pin-label">9</text>
+
+      <!-- More pins... -->
+      <circle cx="0" cy="90" r="4" fill="#555"/>
+      <circle cx="0" cy="108" r="4" fill="#555"/>
+      <circle cx="0" cy="126" r="4" fill="#555"/>
+    </g>
+
+    <!-- GPIO Pin rows - Right side (even pins) -->
+    <g transform="translate(250, 50)">
+      <!-- Pin 2 - 5V - ACTIVE -->
+      <circle cx="0" cy="0" r="6" fill="#e74c3c" stroke="#c0392b" stroke-width="2"/>
+      <text x="15" y="4" class="label-small" fill="#c0392b" font-weight="bold">5V</text>
+      <text x="0" y="3" class="pin-label">2</text>
+
+      <!-- Pin 4 - 5V -->
+      <circle cx="0" cy="18" r="5" fill="#e74c3c"/>
+      <text x="0" y="21" class="pin-label">4</text>
+
+      <!-- Pin 6 - GND - ACTIVE -->
+      <circle cx="0" cy="36" r="6" fill="#1a1a1a" stroke="#333" stroke-width="2"/>
+      <text x="15" y="40" class="label-small" fill="#333" font-weight="bold">GND</text>
+      <text x="0" y="39" class="pin-label">6</text>
+
+      <!-- Pin 8 -->
+      <circle cx="0" cy="54" r="5" fill="#555"/>
+      <text x="0" y="57" class="pin-label">8</text>
+
+      <!-- Pin 10 -->
+      <circle cx="0" cy="72" r="5" fill="#555"/>
+      <text x="0" y="75" class="pin-label">10</text>
+
+      <!-- More pins... -->
+      <circle cx="0" cy="90" r="4" fill="#555"/>
+      <circle cx="0" cy="108" r="4" fill="#555"/>
+      <circle cx="0" cy="126" r="4" fill="#555"/>
+    </g>
+
+    <!-- USB ports indication -->
+    <rect x="10" y="140" width="40" height="20" rx="2" fill="#444"/>
+    <rect x="10" y="165" width="40" height="20" rx="2" fill="#444"/>
+    <text x="30" y="195" class="label-small" fill="#98c379">USB</text>
+  </g>
+
+  <!-- LCD Module -->
+  <g transform="translate(480, 100)">
+    <!-- LCD Board (green PCB) -->
+    <rect x="0" y="0" width="260" height="140" rx="4" fill="#2d7d46" stroke="#1a5c30" stroke-width="2"/>
+
+    <!-- LCD Screen bezel -->
+    <rect x="15" y="15" width="230" height="70" rx="2" fill="#1a1a2e"/>
+
+    <!-- LCD Display area -->
+    <rect x="25" y="25" width="210" height="50" fill="#3d5c5c"/>
+
+    <!-- LCD character blocks (16x2) -->
+    <g fill="#7dcea0" opacity="0.8">
+      <!-- Row 1 -->
+      <rect x="30" y="30" width="10" height="16" rx="1"/>
+      <rect x="43" y="30" width="10" height="16" rx="1"/>
+      <rect x="56" y="30" width="10" height="16" rx="1"/>
+      <rect x="69" y="30" width="10" height="16" rx="1"/>
+      <rect x="82" y="30" width="10" height="16" rx="1"/>
+      <rect x="95" y="30" width="10" height="16" rx="1"/>
+      <rect x="108" y="30" width="10" height="16" rx="1"/>
+      <rect x="121" y="30" width="10" height="16" rx="1"/>
+      <rect x="134" y="30" width="10" height="16" rx="1"/>
+      <rect x="147" y="30" width="10" height="16" rx="1"/>
+      <rect x="160" y="30" width="10" height="16" rx="1"/>
+      <rect x="173" y="30" width="10" height="16" rx="1"/>
+      <rect x="186" y="30" width="10" height="16" rx="1"/>
+      <rect x="199" y="30" width="10" height="16" rx="1"/>
+      <rect x="212" y="30" width="10" height="16" rx="1"/>
+      <!-- Row 2 -->
+      <rect x="30" y="52" width="10" height="16" rx="1"/>
+      <rect x="43" y="52" width="10" height="16" rx="1"/>
+      <rect x="56" y="52" width="10" height="16" rx="1"/>
+      <rect x="69" y="52" width="10" height="16" rx="1"/>
+      <rect x="82" y="52" width="10" height="16" rx="1"/>
+      <rect x="95" y="52" width="10" height="16" rx="1"/>
+      <rect x="108" y="52" width="10" height="16" rx="1"/>
+      <rect x="121" y="52" width="10" height="16" rx="1"/>
+      <rect x="134" y="52" width="10" height="16" rx="1"/>
+      <rect x="147" y="52" width="10" height="16" rx="1"/>
+      <rect x="160" y="52" width="10" height="16" rx="1"/>
+      <rect x="173" y="52" width="10" height="16" rx="1"/>
+      <rect x="186" y="52" width="10" height="16" rx="1"/>
+      <rect x="199" y="52" width="10" height="16" rx="1"/>
+      <rect x="212" y="52" width="10" height="16" rx="1"/>
+    </g>
+
+    <!-- I2C Backpack module -->
+    <rect x="20" y="95" width="120" height="35" rx="2" fill="#1a1a4d" stroke="#333" stroke-width="1"/>
+    <text x="80" y="110" class="label-small" fill="#aaa" text-anchor="middle">I2C BACKPACK</text>
+    <text x="80" y="122" class="label-small" fill="#666" text-anchor="middle">PCF8574</text>
+
+    <!-- Contrast potentiometer -->
+    <circle cx="180" cy="112" r="12" fill="#666" stroke="#444" stroke-width="2"/>
+    <line x1="180" y1="100" x2="180" y2="108" stroke="#333" stroke-width="2"/>
+    <text x="210" y="116" class="label-small" fill="#1a5c30">CONTRAST</text>
+
+    <!-- Connection pins on I2C module -->
+    <g transform="translate(30, 130)">
+      <rect x="0" y="0" width="14" height="20" fill="#c9a227"/>
+      <text x="7" y="35" class="label-small" text-anchor="middle" fill="#c9a227">VCC</text>
+
+      <rect x="25" y="0" width="14" height="20" fill="#333"/>
+      <text x="32" y="35" class="label-small" text-anchor="middle">GND</text>
+
+      <rect x="50" y="0" width="14" height="20" fill="#f4d03f"/>
+      <text x="57" y="35" class="label-small" text-anchor="middle" fill="#c9a227">SDA</text>
+
+      <rect x="75" y="0" width="14" height="20" fill="#27ae60"/>
+      <text x="82" y="35" class="label-small" text-anchor="middle" fill="#1e8449">SCL</text>
+    </g>
+  </g>
+
+  <!-- WIRES -->
+  <!-- VCC Wire (Red) - Pin 2 to LCD VCC -->
+  <path d="M 300 170
+           C 350 170, 380 200, 400 250
+           L 400 350
+           C 400 380, 450 400, 517 370"
+        fill="none" stroke="#e74c3c" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="300" cy="170" r="6" fill="#e74c3c"/>
+  <circle cx="517" cy="370" r="6" fill="#e74c3c"/>
+  <text x="380" y="300" class="wire-label" fill="#e74c3c">VCC (5V)</text>
+
+  <!-- GND Wire (Black) - Pin 6 to LCD GND -->
+  <path d="M 300 206
+           C 340 206, 360 230, 380 280
+           L 380 360
+           C 380 390, 480 410, 542 370"
+        fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="300" cy="206" r="6" fill="#1a1a1a" stroke="#666" stroke-width="1"/>
+  <circle cx="542" cy="370" r="6" fill="#1a1a1a" stroke="#666" stroke-width="1"/>
+  <text x="360" y="330" class="wire-label" fill="#333">GND</text>
+
+  <!-- SDA Wire (Yellow) - Pin 3 to LCD SDA -->
+  <path d="M 240 188
+           C 280 188, 320 160, 400 160
+           L 500 160
+           C 530 160, 550 200, 567 230"
+        fill="none" stroke="#f4d03f" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="240" cy="188" r="6" fill="#f4d03f"/>
+  <circle cx="567" cy="230" r="6" fill="#f4d03f"/>
+  <text x="420" y="150" class="wire-label" fill="#c9a227">SDA (GPIO2)</text>
+
+  <!-- SCL Wire (Green) - Pin 5 to LCD SCL -->
+  <path d="M 240 206
+           C 270 206, 300 140, 420 140
+           L 520 140
+           C 560 140, 580 180, 592 230"
+        fill="none" stroke="#27ae60" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="240" cy="206" r="6" fill="#27ae60"/>
+  <circle cx="592" cy="230" r="6" fill="#27ae60"/>
+  <text x="440" y="130" class="wire-label" fill="#1e8449">SCL (GPIO3)</text>
+
+  <!-- Legend Box -->
+  <g transform="translate(50, 400)">
+    <rect x="0" y="0" width="300" height="160" rx="8" fill="#fff" stroke="#ddd" stroke-width="2"/>
+    <text x="150" y="25" class="label" text-anchor="middle" font-weight="bold">CONNECTION SUMMARY</text>
+
+    <line x1="20" y1="40" x2="50" y2="40" stroke="#e74c3c" stroke-width="4"/>
+    <text x="60" y="44" class="label-small">VCC → Pin 2 (5V)</text>
+
+    <line x1="20" y1="65" x2="50" y2="65" stroke="#1a1a1a" stroke-width="4"/>
+    <text x="60" y="69" class="label-small">GND → Pin 6 (Ground)</text>
+
+    <line x1="20" y1="90" x2="50" y2="90" stroke="#f4d03f" stroke-width="4"/>
+    <text x="60" y="94" class="label-small">SDA → Pin 3 (GPIO2)</text>
+
+    <line x1="20" y1="115" x2="50" y2="115" stroke="#27ae60" stroke-width="4"/>
+    <text x="60" y="119" class="label-small">SCL → Pin 5 (GPIO3)</text>
+
+    <text x="20" y="145" class="label-small" fill="#666">I2C Address: 0x27 or 0x3F</text>
+  </g>
+
+  <!-- Test Command Box -->
+  <g transform="translate(400, 430)">
+    <rect x="0" y="0" width="350" height="100" rx="8" fill="#1a1a2e" stroke="#333" stroke-width="2"/>
+    <text x="175" y="25" class="label" text-anchor="middle" fill="#98c379">VERIFICATION</text>
+
+    <text x="20" y="50" class="label-small" fill="#e5c07b">$ sudo apt install i2c-tools</text>
+    <text x="20" y="70" class="label-small" fill="#e5c07b">$ i2cdetect -y 1</text>
+    <text x="20" y="90" class="label-small" fill="#666"># Look for 27 or 3F in the grid</text>
+  </g>
+
+  <!-- Notes -->
+  <text x="400" y="580" class="label-small" text-anchor="middle" fill="#888">
+    Note: Most 1602A LCDs with I2C backpack only need 4 wires. Adjust contrast pot if display is blank.
+  </text>
+</svg>
