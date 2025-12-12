@@ -1,0 +1,53 @@
+# The Gnarl Pi - Pi Zero W Configuration
+# Optimized for single-core Pi Zero W (limited CPU)
+
+hardware:
+  lcd:
+    type: "i2c"
+    address: 0x27
+    cols: 16
+    rows: 2
+
+  encoders:
+    - name: "filter"
+      clk_pin: 17
+      dt_pin: 18
+      min_value: 0
+      max_value: 127
+      default: 64
+      midi_cc: 74
+
+    - name: "volume"
+      clk_pin: 22
+      dt_pin: 23
+      min_value: 0
+      max_value: 127
+      default: 100
+      midi_cc: 7
+
+  switches:
+    - name: "preset_1"
+      pin: 4
+      action: "load_preset"
+      preset: 0
+
+    - name: "preset_2"
+      pin: 14
+      action: "load_preset"
+      preset: 1
+
+# Pi Zero optimized settings
+synth:
+  engine: "zyn"
+  jack_client_name: "ZynAddSubFX"
+  sample_rate: 44100  # Lower sample rate for CPU
+  buffer_size: 512    # Larger buffer for stability
+  midi_channel: 0
+  polyphony: 4        # Limited polyphony
+
+presets:
+  - name: "Simple Lead"
+    file: "/home/pi/.local/share/zynaddsubfx/banks/simple/lead.xiz"
+
+  - name: "Simple Bass"
+    file: "/home/pi/.local/share/zynaddsubfx/banks/simple/bass.xiz"

@@ -1,0 +1,201 @@
+# The Gnarl Pi - Full Groovebox Configuration
+# Complete setup with ALL features: MIDI I/O, sequencer, displays, motion control
+
+hardware:
+  # LCD Display (1602A I2C)
+  lcd:
+    type: "i2c"
+    address: 0x27
+    cols: 16
+    rows: 2
+
+  # Rotary Encoders (3x for real-time parameter control)
+  encoders:
+    - name: "filter_cutoff"
+      clk_pin: 17
+      dt_pin: 18
+      sw_pin: 27
+      min_value: 0
+      max_value: 127
+      default: 64
+      midi_cc: 74  # Brightness/Cutoff
+
+    - name: "resonance"
+      clk_pin: 22
+      dt_pin: 23
+      sw_pin: 24
+      min_value: 0
+      max_value: 127
+      default: 32
+      midi_cc: 71  # Resonance
+
+    - name: "distortion"
+      clk_pin: 5
+      dt_pin: 6
+      sw_pin: 13
+      min_value: 0
+      max_value: 127
+      default: 0
+      midi_cc: 94  # Effect Depth
+
+  # Switches (6x for presets and controls)
+  switches:
+    - name: "preset_1"
+      pin: 4
+      action: "load_preset"
+      preset: 0
+
+    - name: "preset_2"
+      pin: 14
+      action: "load_preset"
+      preset: 1
+
+    - name: "preset_3"
+      pin: 15
+      action: "load_preset"
+      preset: 2
+
+    - name: "octave_up"
+      pin: 25
+      action: "octave_shift"
+      value: 1
+
+    - name: "octave_down"
+      pin: 12
+      action: "octave_shift"
+      value: -1
+
+    - name: "play_pause"
+      pin: 16
+      action: "toggle_effect"
+      midi_cc: 93
+
+  # Analog Joystick (via MCP3008 ADC)
+  joystick:
+    spi_device: 0
+    spi_channel: 0
+    x_channel: 0
+    y_channel: 1
+    sw_pin: 26
+    x_midi_cc: 1  # Modulation wheel
+    y_midi_cc: 2  # Breath controller
+    deadzone: 10
+
+  # LED Shift Registers (3x SN74HC595)
+  shift_registers:
+    data_pin: 19
+    clock_pin: 20
+    latch_pin: 21
+    num_registers: 3  # 24 outputs total
+
+  # Button Matrix (16 buttons for step sequencer/keyboard)
+  button_matrix:
+    row_pins: [7, 8, 9, 10]  # 4 rows
+    col_pins: [11, 0, 1, 2]  # 4 columns = 4x4 = 16 buttons
+    debounce_time: 0.02
+    mode: "sequencer"  # Options: sequencer, keyboard, chords, presets
+
+  # LED Bar Graphs (3x for visual parameter feedback)
+  led_bars:
+    - name: "cutoff_bar"
+      num_segments: 10
+      start_output: 0  # Uses shift register outputs 0-9
+
+    - name: "resonance_bar"
+      num_segments: 10
+      start_output: 10  # Uses shift register outputs 10-19
+
+    - name: "level_bar"
+      num_segments: 4
+      start_output: 20  # Uses shift register outputs 20-23
+
+  # 7-Segment Displays
+  seven_segment:
+    num_digits: 4
+    common_anode: false
+    # Connected via shift registers or dedicated pins
+    # (Implementation depends on wiring)
+
+  single_digit:
+    # For octave indicator
+    start_output: 24
+
+  # 8x8 LED Matrix (for waveform/pattern visualization)
+  led_matrix:
+    use_max7219: false  # Using shift registers instead
+    # Requires 2 shift registers (16 outputs) for row/col control
+
+  # MPU-6050 Accelerometer/Gyroscope (GY-521)
+  accelerometer:
+    i2c_bus: 1
+    address: 0x68
+    pitch_midi_cc: 75  # Vibrato depth
+    roll_midi_cc: 76   # Brightness
+    shake_threshold: 2.5
+
+  # HC-SR04 Ultrasonic Distance Sensor
+  ultrasonic:
+    trigger_pin: 3
+    echo_pin: 4
+    min_distance: 5.0    # cm
+    max_distance: 80.0   # cm
+    midi_cc: 77  # Filter cutoff modulation
+
+# Synth Configuration
+synth:
+  engine: "zyn"
+  jack_client_name: "ZynAddSubFX"
+  sample_rate: 48000
+  buffer_size: 128
+  midi_channel: 0
+  polyphony: 8
+
+# MIDI Input/Output
+midi:
+  # MIDI Input (from external keyboard)
+  input:
+    enabled: true
+    port_name: null  # null = use first available port
+    merge_with_internal: true  # Merge external MIDI with sequencer/buttons
+
+  # MIDI Output (to synth engine)
+  output:
+    port_name: "ZynAddSubFX"
+
+# Step Sequencer
+sequencer:
+  enabled: true
+  num_steps: 16
+  bpm: 120
+  auto_start: false
+  # Pattern will be set via button matrix
+
+# Presets
+presets:
+  - name: "Dirty Lead"
+    file: "/home/pi/.local/share/zynaddsubfx/banks/GnarlyBank/001.xiz"
+    description: "Aggressive lead with heavy distortion"
+
+  - name: "Grungy Bass"
+    file: "/home/pi/.local/share/zynaddsubfx/banks/GnarlyBank/002.xiz"
+    description: "Low-end grunge bass"
+
+  - name: "Lo-Fi Pad"
+    file: "/home/pi/.local/share/zynaddsubfx/banks/GnarlyBank/003.xiz"
+    description: "Degraded pad sound"
+
+# Display Mappings
+display:
+  # Map parameters to LED bars
+  led_bar_1: "filter_cutoff"
+  led_bar_2: "resonance"
+  led_bar_3: "output_level"
+
+  # 7-segment shows parameter values or BPM
+  seven_segment_mode: "parameter"  # Options: parameter, bpm, preset
+
+  # 8x8 matrix shows waveform or sequencer
+  matrix_mode: "sequencer"  # Options: waveform, sequencer, spectrum
+
+  # Single digit shows octave offset
+  single_digit_mode: "octave"

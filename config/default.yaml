@@ -1,0 +1,115 @@
+# The Gnarl Pi - Default Configuration
+# Complete example with all hardware components
+
+hardware:
+  # LCD Display (1602A I2C)
+  lcd:
+    type: "i2c"
+    address: 0x27  # Common: 0x27 or 0x3F (check with i2cdetect)
+    cols: 16
+    rows: 2
+
+  # Rotary Encoders
+  encoders:
+    - name: "filter_cutoff"
+      clk_pin: 17
+      dt_pin: 18
+      sw_pin: 27
+      min_value: 0
+      max_value: 127
+      default: 64
+      midi_cc: 74  # Brightness/Cutoff
+
+    - name: "resonance"
+      clk_pin: 22
+      dt_pin: 23
+      sw_pin: 24
+      min_value: 0
+      max_value: 127
+      default: 32
+      midi_cc: 71  # Resonance
+
+    - name: "distortion"
+      clk_pin: 5
+      dt_pin: 6
+      sw_pin: 13
+      min_value: 0
+      max_value: 127
+      default: 0
+      midi_cc: 94  # Effect Depth
+
+  # Switches/Buttons
+  switches:
+    # Preset selection
+    - name: "preset_1"
+      pin: 4
+      action: "load_preset"
+      preset: 0
+
+    - name: "preset_2"
+      pin: 14
+      action: "load_preset"
+      preset: 1
+
+    - name: "preset_3"
+      pin: 15
+      action: "load_preset"
+      preset: 2
+
+    # Octave shift
+    - name: "octave_up"
+      pin: 25
+      action: "octave_shift"
+      value: 1
+
+    - name: "octave_down"
+      pin: 12
+      action: "octave_shift"
+      value: -1
+
+    # Effect toggle
+    - name: "effect_toggle"
+      pin: 16
+      action: "toggle_effect"
+      midi_cc: 93  # Effect Toggle
+
+  # Analog Joystick (via MCP3008 ADC)
+  joystick:
+    spi_device: 0
+    spi_channel: 0
+    x_channel: 0  # MCP3008 channel for X-axis
+    y_channel: 1  # MCP3008 channel for Y-axis
+    sw_pin: 26    # Push button
+    x_midi_cc: 1  # Modulation wheel
+    y_midi_cc: 2  # Breath controller
+    deadzone: 10  # Deadzone percentage
+
+  # LED Control (SN74HC595 shift registers)
+  shift_registers:
+    data_pin: 19
+    clock_pin: 20
+    latch_pin: 21
+    num_registers: 3  # 3 chips = 24 LED outputs
+
+# Synth Configuration
+synth:
+  engine: "zyn"  # Options: zyn, yoshimi, fluidsynth
+  jack_client_name: "ZynAddSubFX"
+  sample_rate: 48000
+  buffer_size: 128  # Lower = lower latency, higher CPU
+  midi_channel: 0
+  polyphony: 8
+
+# Presets
+presets:
+  - name: "Dirty Lead"
+    file: "/home/pi/.local/share/zynaddsubfx/banks/GnarlyBank/001.xiz"
+    description: "Aggressive lead with heavy distortion"
+
+  - name: "Grungy Bass"
+    file: "/home/pi/.local/share/zynaddsubfx/banks/GnarlyBank/002.xiz"
+    description: "Low-end grunge bass"
+
+  - name: "Lo-Fi Pad"
+    file: "/home/pi/.local/share/zynaddsubfx/banks/GnarlyBank/003.xiz"
+    description: "Degraded pad sound"

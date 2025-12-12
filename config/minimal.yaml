@@ -1,0 +1,41 @@
+# The Gnarl Pi - Minimal Configuration
+# Basic setup with LCD and one encoder
+
+hardware:
+  # LCD Display
+  lcd:
+    type: "i2c"
+    address: 0x27
+    cols: 16
+    rows: 2
+
+  # Single encoder for testing
+  encoders:
+    - name: "filter_cutoff"
+      clk_pin: 17
+      dt_pin: 18
+      min_value: 0
+      max_value: 127
+      default: 64
+      midi_cc: 74
+
+  # Basic switches
+  switches:
+    - name: "preset_1"
+      pin: 4
+      action: "load_preset"
+      preset: 0
+
+# Synth Configuration
+synth:
+  engine: "zyn"
+  jack_client_name: "ZynAddSubFX"
+  sample_rate: 48000
+  buffer_size: 256  # Higher buffer for stability
+  midi_channel: 0
+  polyphony: 4
+
+# Single preset
+presets:
+  - name: "Default Patch"
+    file: "/home/pi/.local/share/zynaddsubfx/banks/default/001.xiz"
