@@ -1,0 +1,336 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 700">
+  <defs>
+    <style>
+      .label { font-family: 'Courier New', monospace; font-size: 12px; fill: #1a1a1a; }
+      .label-small { font-family: 'Courier New', monospace; font-size: 10px; fill: #333; }
+      .label-white { font-family: 'Courier New', monospace; font-size: 10px; fill: #fff; }
+      .title { font-family: 'Arial', sans-serif; font-size: 18px; font-weight: bold; fill: #1a1a1a; }
+      .subtitle { font-family: 'Arial', sans-serif; font-size: 12px; fill: #444; }
+      .pin-label { font-family: 'Courier New', monospace; font-size: 9px; fill: #fff; text-anchor: middle; }
+      .wire-label { font-family: 'Arial', sans-serif; font-size: 11px; font-weight: bold; }
+      .section-title { font-family: 'Arial', sans-serif; font-size: 14px; font-weight: bold; fill: #1a1a1a; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="700" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="450" y="35" class="title" text-anchor="middle">Rotary Encoder (KY-040) Wiring</text>
+  <text x="450" y="55" class="subtitle" text-anchor="middle">The Gnarl Pi - Diagram 2 of 5 | Showing Encoder 1 (Filter Cutoff)</text>
+
+  <!-- Section divider -->
+  <line x1="450" y1="80" x2="450" y2="620" stroke="#ccc" stroke-width="1" stroke-dasharray="5,5"/>
+  <text x="225" y="95" class="section-title" text-anchor="middle">MINIMAL WIRING</text>
+  <text x="675" y="95" class="section-title" text-anchor="middle">WITH PULL-UP RESISTORS</text>
+  <text x="225" y="110" class="label-small" text-anchor="middle" fill="#666">(uses internal pull-ups)</text>
+  <text x="675" y="110" class="label-small" text-anchor="middle" fill="#666">(recommended for stability)</text>
+
+  <!-- ==================== LEFT SIDE: MINIMAL WIRING ==================== -->
+
+  <!-- Raspberry Pi (Left) -->
+  <g transform="translate(30, 140)">
+    <rect x="0" y="0" width="180" height="280" rx="8" fill="#1e5631" stroke="#0d3318" stroke-width="2"/>
+    <text x="90" y="25" class="label" text-anchor="middle" fill="#fff">RASPBERRY PI</text>
+
+    <!-- GPIO Header -->
+    <rect x="120" y="45" width="50" height="220" rx="2" fill="#222"/>
+
+    <!-- Relevant pins - Left column -->
+    <g transform="translate(130, 55)">
+      <!-- Pin 1 - 3V3 -->
+      <circle cx="0" cy="0" r="5" fill="#ff6b6b"/>
+      <text x="-8" y="4" class="label-small" text-anchor="end" fill="#fff">3V3</text>
+
+      <!-- Pins 3,5,7 -->
+      <circle cx="0" cy="18" r="4" fill="#555"/>
+      <circle cx="0" cy="36" r="4" fill="#555"/>
+      <circle cx="0" cy="54" r="4" fill="#555"/>
+
+      <!-- Pin 9 - GND -->
+      <circle cx="0" cy="72" r="5" fill="#333" stroke="#666" stroke-width="1"/>
+      <text x="-8" y="76" class="label-small" text-anchor="end" fill="#fff">GND</text>
+
+      <!-- Pin 11 - GPIO17 (CLK) -->
+      <circle cx="0" cy="90" r="6" fill="#3498db" stroke="#fff" stroke-width="2"/>
+      <text x="-8" y="94" class="label-small" text-anchor="end" fill="#fff">17</text>
+
+      <!-- Pin 13 - GPIO27 (SW) -->
+      <circle cx="0" cy="108" r="6" fill="#9b59b6" stroke="#fff" stroke-width="2"/>
+      <text x="-8" y="112" class="label-small" text-anchor="end" fill="#fff">27</text>
+
+      <!-- More pins -->
+      <circle cx="0" cy="126" r="4" fill="#555"/>
+      <circle cx="0" cy="144" r="4" fill="#555"/>
+      <circle cx="0" cy="162" r="4" fill="#555"/>
+      <circle cx="0" cy="180" r="4" fill="#555"/>
+    </g>
+
+    <!-- Right column -->
+    <g transform="translate(160, 55)">
+      <!-- Pin 2 - 5V -->
+      <circle cx="0" cy="0" r="5" fill="#e74c3c"/>
+
+      <!-- Pins 4,6,8,10 -->
+      <circle cx="0" cy="18" r="4" fill="#e74c3c"/>
+      <circle cx="0" cy="36" r="4" fill="#333"/>
+      <circle cx="0" cy="54" r="4" fill="#555"/>
+      <circle cx="0" cy="72" r="4" fill="#555"/>
+
+      <!-- Pin 12 - GPIO18 (DT) -->
+      <circle cx="0" cy="90" r="6" fill="#e67e22" stroke="#fff" stroke-width="2"/>
+      <text x="8" y="94" class="label-small" fill="#fff">18</text>
+
+      <!-- Pin 14 - GND -->
+      <circle cx="0" cy="108" r="4" fill="#333"/>
+
+      <!-- More pins -->
+      <circle cx="0" cy="126" r="4" fill="#555"/>
+      <circle cx="0" cy="144" r="4" fill="#555"/>
+      <circle cx="0" cy="162" r="4" fill="#555"/>
+      <circle cx="0" cy="180" r="4" fill="#555"/>
+    </g>
+  </g>
+
+  <!-- KY-040 Encoder Module (Left) -->
+  <g transform="translate(280, 180)">
+    <!-- PCB -->
+    <rect x="0" y="0" width="120" height="160" rx="4" fill="#1a4d80" stroke="#0d2940" stroke-width="2"/>
+    <text x="60" y="20" class="label-small" text-anchor="middle" fill="#fff">KY-040</text>
+
+    <!-- Encoder body -->
+    <circle cx="60" cy="70" r="35" fill="#333" stroke="#222" stroke-width="2"/>
+    <circle cx="60" cy="70" r="25" fill="#444"/>
+    <circle cx="60" cy="70" r="8" fill="#222"/>
+
+    <!-- Knob indicator -->
+    <line x1="60" y1="50" x2="60" y2="60" stroke="#888" stroke-width="3" stroke-linecap="round"/>
+
+    <!-- Pin header -->
+    <g transform="translate(15, 120)">
+      <rect x="0" y="0" width="16" height="25" fill="#c9a227"/>
+      <text x="8" y="38" class="label-small" text-anchor="middle" fill="#1a1a1a">CLK</text>
+
+      <rect x="22" y="0" width="16" height="25" fill="#c9a227"/>
+      <text x="30" y="38" class="label-small" text-anchor="middle" fill="#1a1a1a">DT</text>
+
+      <rect x="44" y="0" width="16" height="25" fill="#c9a227"/>
+      <text x="52" y="38" class="label-small" text-anchor="middle" fill="#1a1a1a">SW</text>
+
+      <rect x="66" y="0" width="16" height="25" fill="#c9a227"/>
+      <text x="74" y="38" class="label-small" text-anchor="middle" fill="#1a1a1a">+</text>
+
+      <rect x="88" y="0" width="16" height="25" fill="#c9a227"/>
+      <text x="96" y="38" class="label-small" text-anchor="middle" fill="#1a1a1a">GND</text>
+    </g>
+  </g>
+
+  <!-- Wires (Left side - minimal) -->
+  <!-- CLK wire (Blue) -->
+  <path d="M 160 285 L 220 285 L 220 345 L 295 345" fill="none" stroke="#3498db" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="160" cy="285" r="5" fill="#3498db"/>
+  <circle cx="295" cy="345" r="5" fill="#3498db"/>
+
+  <!-- DT wire (Orange) -->
+  <path d="M 190 285 L 240 285 L 240 355 L 317 355" fill="none" stroke="#e67e22" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="190" cy="285" r="5" fill="#e67e22"/>
+  <circle cx="317" cy="355" r="5" fill="#e67e22"/>
+
+  <!-- SW wire (Purple) -->
+  <path d="M 160 303 L 200 303 L 200 365 L 339 365" fill="none" stroke="#9b59b6" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="160" cy="303" r="5" fill="#9b59b6"/>
+  <circle cx="339" cy="365" r="5" fill="#9b59b6"/>
+
+  <!-- + wire (Red - 3.3V) -->
+  <path d="M 160 195 L 180 195 L 180 160 L 420 160 L 420 375 L 361 375" fill="none" stroke="#ff6b6b" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="160" cy="195" r="5" fill="#ff6b6b"/>
+  <circle cx="361" cy="375" r="5" fill="#ff6b6b"/>
+  <text x="300" y="152" class="wire-label" fill="#cc4444">3.3V (NOT 5V!)</text>
+
+  <!-- GND wire (Black) -->
+  <path d="M 160 267 L 175 267 L 175 390 L 383 390" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="160" cy="267" r="5" fill="#1a1a1a" stroke="#666" stroke-width="1"/>
+  <circle cx="383" cy="390" r="5" fill="#1a1a1a" stroke="#666" stroke-width="1"/>
+
+  <!-- ==================== RIGHT SIDE: WITH PULL-UPS ==================== -->
+
+  <!-- Raspberry Pi (Right) -->
+  <g transform="translate(480, 140)">
+    <rect x="0" y="0" width="180" height="280" rx="8" fill="#1e5631" stroke="#0d3318" stroke-width="2"/>
+    <text x="90" y="25" class="label" text-anchor="middle" fill="#fff">RASPBERRY PI</text>
+
+    <!-- GPIO Header -->
+    <rect x="120" y="45" width="50" height="220" rx="2" fill="#222"/>
+
+    <!-- Relevant pins - Left column -->
+    <g transform="translate(130, 55)">
+      <!-- Pin 1 - 3V3 -->
+      <circle cx="0" cy="0" r="6" fill="#ff6b6b" stroke="#fff" stroke-width="2"/>
+      <text x="-8" y="4" class="label-small" text-anchor="end" fill="#fff">3V3</text>
+
+      <!-- Pins 3,5,7 -->
+      <circle cx="0" cy="18" r="4" fill="#555"/>
+      <circle cx="0" cy="36" r="4" fill="#555"/>
+      <circle cx="0" cy="54" r="4" fill="#555"/>
+
+      <!-- Pin 9 - GND -->
+      <circle cx="0" cy="72" r="5" fill="#333" stroke="#666" stroke-width="1"/>
+      <text x="-8" y="76" class="label-small" text-anchor="end" fill="#fff">GND</text>
+
+      <!-- Pin 11 - GPIO17 (CLK) -->
+      <circle cx="0" cy="90" r="6" fill="#3498db" stroke="#fff" stroke-width="2"/>
+      <text x="-8" y="94" class="label-small" text-anchor="end" fill="#fff">17</text>
+
+      <!-- Pin 13 - GPIO27 (SW) -->
+      <circle cx="0" cy="108" r="6" fill="#9b59b6" stroke="#fff" stroke-width="2"/>
+      <text x="-8" y="112" class="label-small" text-anchor="end" fill="#fff">27</text>
+
+      <circle cx="0" cy="126" r="4" fill="#555"/>
+      <circle cx="0" cy="144" r="4" fill="#555"/>
+      <circle cx="0" cy="162" r="4" fill="#555"/>
+      <circle cx="0" cy="180" r="4" fill="#555"/>
+    </g>
+
+    <!-- Right column -->
+    <g transform="translate(160, 55)">
+      <circle cx="0" cy="0" r="5" fill="#e74c3c"/>
+      <circle cx="0" cy="18" r="4" fill="#e74c3c"/>
+      <circle cx="0" cy="36" r="4" fill="#333"/>
+      <circle cx="0" cy="54" r="4" fill="#555"/>
+      <circle cx="0" cy="72" r="4" fill="#555"/>
+
+      <!-- Pin 12 - GPIO18 (DT) -->
+      <circle cx="0" cy="90" r="6" fill="#e67e22" stroke="#fff" stroke-width="2"/>
+      <text x="8" y="94" class="label-small" fill="#fff">18</text>
+
+      <circle cx="0" cy="108" r="4" fill="#333"/>
+      <circle cx="0" cy="126" r="4" fill="#555"/>
+      <circle cx="0" cy="144" r="4" fill="#555"/>
+      <circle cx="0" cy="162" r="4" fill="#555"/>
+      <circle cx="0" cy="180" r="4" fill="#555"/>
+    </g>
+  </g>
+
+  <!-- Pull-up resistor bank -->
+  <g transform="translate(700, 200)">
+    <rect x="0" y="0" width="80" height="140" rx="4" fill="#fff" stroke="#aaa" stroke-width="2"/>
+    <text x="40" y="20" class="label-small" text-anchor="middle" fill="#333">PULL-UPS</text>
+
+    <!-- Resistor symbols -->
+    <!-- R1 for CLK -->
+    <text x="15" y="45" class="label-small" fill="#3498db">CLK</text>
+    <path d="M 50 40 L 55 40 L 57 35 L 61 45 L 65 35 L 69 45 L 71 40 L 76 40" fill="none" stroke="#333" stroke-width="1.5"/>
+    <text x="68" y="55" class="label-small" fill="#666">10k</text>
+
+    <!-- R2 for DT -->
+    <text x="15" y="80" class="label-small" fill="#e67e22">DT</text>
+    <path d="M 50 75 L 55 75 L 57 70 L 61 80 L 65 70 L 69 80 L 71 75 L 76 75" fill="none" stroke="#333" stroke-width="1.5"/>
+    <text x="68" y="90" class="label-small" fill="#666">10k</text>
+
+    <!-- R3 for SW -->
+    <text x="15" y="115" class="label-small" fill="#9b59b6">SW</text>
+    <path d="M 50 110 L 55 110 L 57 105 L 61 115 L 65 105 L 69 115 L 71 110 L 76 110" fill="none" stroke="#333" stroke-width="1.5"/>
+    <text x="68" y="125" class="label-small" fill="#666">10k</text>
+  </g>
+
+  <!-- KY-040 Encoder Module (Right) -->
+  <g transform="translate(700, 380)">
+    <rect x="0" y="0" width="120" height="160" rx="4" fill="#1a4d80" stroke="#0d2940" stroke-width="2"/>
+    <text x="60" y="20" class="label-small" text-anchor="middle" fill="#fff">KY-040</text>
+
+    <circle cx="60" cy="70" r="35" fill="#333" stroke="#222" stroke-width="2"/>
+    <circle cx="60" cy="70" r="25" fill="#444"/>
+    <circle cx="60" cy="70" r="8" fill="#222"/>
+    <line x1="60" y1="50" x2="60" y2="60" stroke="#888" stroke-width="3" stroke-linecap="round"/>
+
+    <g transform="translate(15, 120)">
+      <rect x="0" y="0" width="16" height="25" fill="#c9a227"/>
+      <text x="8" y="38" class="label-small" text-anchor="middle" fill="#1a1a1a">CLK</text>
+
+      <rect x="22" y="0" width="16" height="25" fill="#c9a227"/>
+      <text x="30" y="38" class="label-small" text-anchor="middle" fill="#1a1a1a">DT</text>
+
+      <rect x="44" y="0" width="16" height="25" fill="#c9a227"/>
+      <text x="52" y="38" class="label-small" text-anchor="middle" fill="#1a1a1a">SW</text>
+
+      <rect x="66" y="0" width="16" height="25" fill="#c9a227"/>
+      <text x="74" y="38" class="label-small" text-anchor="middle" fill="#1a1a1a">+</text>
+
+      <rect x="88" y="0" width="16" height="25" fill="#c9a227"/>
+      <text x="96" y="38" class="label-small" text-anchor="middle" fill="#1a1a1a">GND</text>
+    </g>
+  </g>
+
+  <!-- Wires (Right side - with pull-ups) -->
+  <!-- 3.3V to pull-up resistors common -->
+  <path d="M 610 195 L 630 195 L 630 170 L 780 170 L 780 200" fill="none" stroke="#ff6b6b" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="610" cy="195" r="5" fill="#ff6b6b"/>
+  <text x="700" y="165" class="wire-label" fill="#cc4444">3.3V rail</text>
+
+  <!-- 3.3V down to encoder + pin -->
+  <path d="M 780 170 L 820 170 L 820 360 L 781 500" fill="none" stroke="#ff6b6b" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="781" cy="500" r="5" fill="#ff6b6b"/>
+
+  <!-- CLK: GPIO17 -> resistor junction -> encoder -->
+  <path d="M 610 285 L 680 285 L 680 240 L 700 240" fill="none" stroke="#3498db" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="610" cy="285" r="5" fill="#3498db"/>
+  <path d="M 680 240 L 680 500 L 715 500" fill="none" stroke="#3498db" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="715" cy="500" r="5" fill="#3498db"/>
+  <circle cx="680" cy="240" r="4" fill="#3498db"/>
+
+  <!-- DT: GPIO18 -> resistor junction -> encoder -->
+  <path d="M 640 285 L 665 285 L 665 275 L 700 275" fill="none" stroke="#e67e22" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="640" cy="285" r="5" fill="#e67e22"/>
+  <path d="M 665 275 L 665 510 L 737 510" fill="none" stroke="#e67e22" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="737" cy="510" r="5" fill="#e67e22"/>
+  <circle cx="665" cy="275" r="4" fill="#e67e22"/>
+
+  <!-- SW: GPIO27 -> resistor junction -> encoder -->
+  <path d="M 610 303 L 650 303 L 650 310 L 700 310" fill="none" stroke="#9b59b6" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="610" cy="303" r="5" fill="#9b59b6"/>
+  <path d="M 650 310 L 650 520 L 759 520" fill="none" stroke="#9b59b6" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="759" cy="520" r="5" fill="#9b59b6"/>
+  <circle cx="650" cy="310" r="4" fill="#9b59b6"/>
+
+  <!-- GND wire -->
+  <path d="M 610 267 L 625 267 L 625 560 L 803 560 L 803 530" fill="none" stroke="#1a1a1a" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="610" cy="267" r="5" fill="#1a1a1a" stroke="#666" stroke-width="1"/>
+  <circle cx="803" cy="530" r="5" fill="#1a1a1a" stroke="#666" stroke-width="1"/>
+
+  <!-- Legend Box -->
+  <g transform="translate(30, 480)">
+    <rect x="0" y="0" width="400" height="180" rx="8" fill="#fff" stroke="#bbb" stroke-width="2"/>
+    <text x="200" y="25" class="label" text-anchor="middle" font-weight="bold" fill="#1a1a1a">ENCODER 1 (FILTER CUTOFF) - PIN MAPPING</text>
+
+    <line x1="20" y1="50" x2="50" y2="50" stroke="#3498db" stroke-width="4"/>
+    <text x="60" y="54" class="label-small">CLK → GPIO17 (Pin 11)</text>
+
+    <line x1="20" y1="75" x2="50" y2="75" stroke="#e67e22" stroke-width="4"/>
+    <text x="60" y="79" class="label-small">DT  → GPIO18 (Pin 12)</text>
+
+    <line x1="20" y1="100" x2="50" y2="100" stroke="#9b59b6" stroke-width="4"/>
+    <text x="60" y="104" class="label-small">SW  → GPIO27 (Pin 13)</text>
+
+    <line x1="20" y1="125" x2="50" y2="125" stroke="#ff6b6b" stroke-width="4"/>
+    <text x="60" y="129" class="label-small">+   → 3.3V (Pin 1) ⚠ NOT 5V!</text>
+
+    <line x1="20" y1="150" x2="50" y2="150" stroke="#1a1a1a" stroke-width="4"/>
+    <text x="60" y="154" class="label-small">GND → GND (Pin 9)</text>
+
+    <text x="280" y="75" class="label-small" fill="#1a1a1a">OTHER ENCODERS:</text>
+    <text x="280" y="95" class="label-small" fill="#555">Enc 2: GPIO22,23,24</text>
+    <text x="280" y="115" class="label-small" fill="#555">Enc 3: GPIO5,6,13</text>
+  </g>
+
+  <!-- Warning box -->
+  <g transform="translate(30, 430)">
+    <rect x="0" y="0" width="400" height="40" rx="4" fill="#fff3cd" stroke="#ffc107" stroke-width="2"/>
+    <text x="20" y="16" class="label-small" fill="#856404">⚠ IMPORTANT: Use 3.3V for encoder VCC!</text>
+    <text x="20" y="32" class="label-small" fill="#856404">   5V will damage Raspberry Pi GPIO pins.</text>
+  </g>
+
+  <!-- Notes -->
+  <text x="450" y="680" class="label-small" text-anchor="middle" fill="#666">
+    Pull-up resistors (10kΩ) improve signal stability. Internal pull-ups work but external are more reliable.
+  </text>
+</svg>
