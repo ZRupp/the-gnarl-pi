@@ -1,0 +1,379 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 750">
+  <defs>
+    <style>
+      .label { font-family: 'Courier New', monospace; font-size: 12px; fill: #1a1a1a; }
+      .label-small { font-family: 'Courier New', monospace; font-size: 10px; fill: #333; }
+      .label-white { font-family: 'Courier New', monospace; font-size: 10px; fill: #fff; }
+      .title { font-family: 'Arial', sans-serif; font-size: 18px; font-weight: bold; fill: #1a1a1a; }
+      .subtitle { font-family: 'Arial', sans-serif; font-size: 12px; fill: #444; }
+      .pin-label { font-family: 'Courier New', monospace; font-size: 9px; fill: #fff; text-anchor: middle; }
+      .wire-label { font-family: 'Arial', sans-serif; font-size: 11px; font-weight: bold; }
+      .section-title { font-family: 'Arial', sans-serif; font-size: 14px; font-weight: bold; fill: #1a1a1a; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="750" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="450" y="35" class="title" text-anchor="middle">Tactile Switches / Buttons Wiring</text>
+  <text x="450" y="55" class="subtitle" text-anchor="middle">The Gnarl Pi - Diagram 3 of 5 | 6 Momentary Push Buttons</text>
+
+  <!-- ==================== LEFT SIDE: SINGLE SWITCH DETAIL ==================== -->
+
+  <g transform="translate(30, 80)">
+    <rect x="0" y="0" width="380" height="320" rx="8" fill="#fff" stroke="#ccc" stroke-width="2"/>
+    <text x="190" y="25" class="section-title" text-anchor="middle">SINGLE SWITCH DETAIL</text>
+    <text x="190" y="42" class="label-small" text-anchor="middle" fill="#666">(with external pull-up resistor)</text>
+
+    <!-- 3.3V rail -->
+    <line x1="60" y1="70" x2="320" y2="70" stroke="#ff6b6b" stroke-width="3"/>
+    <text x="50" y="74" class="label-small" text-anchor="end" fill="#cc4444">3.3V</text>
+    <circle cx="320" cy="70" r="4" fill="#ff6b6b"/>
+
+    <!-- Pull-up resistor -->
+    <line x1="180" y1="70" x2="180" y2="90" stroke="#1a1a1a" stroke-width="2"/>
+    <rect x="172" y="90" width="16" height="40" fill="#e8d4a8" stroke="#333" stroke-width="1"/>
+    <text x="168" y="115" class="label-small" text-anchor="end" fill="#1a1a1a">10kΩ</text>
+    <!-- Resistor bands -->
+    <line x1="172" y1="100" x2="188" y2="100" stroke="#8b4513" stroke-width="3"/>
+    <line x1="172" y1="110" x2="188" y2="110" stroke="#1a1a1a" stroke-width="3"/>
+    <line x1="172" y1="120" x2="188" y2="120" stroke="#ffa500" stroke-width="3"/>
+
+    <!-- Junction point -->
+    <line x1="180" y1="130" x2="180" y2="150" stroke="#1a1a1a" stroke-width="2"/>
+    <circle cx="180" cy="150" r="5" fill="#27ae60"/>
+
+    <!-- To GPIO label -->
+    <line x1="180" y1="150" x2="320" y2="150" stroke="#27ae60" stroke-width="3"/>
+    <text x="330" y="154" class="label-small" fill="#1e8449">→ to GPIO</text>
+    <circle cx="320" cy="150" r="4" fill="#27ae60"/>
+
+    <!-- Wire down to switch -->
+    <line x1="180" y1="150" x2="180" y2="190" stroke="#1a1a1a" stroke-width="2"/>
+
+    <!-- Tactile switch symbol -->
+    <g transform="translate(140, 190)">
+      <!-- Switch body outline -->
+      <rect x="0" y="0" width="80" height="60" rx="4" fill="#333" stroke="#1a1a1a" stroke-width="2"/>
+
+      <!-- Button cap -->
+      <rect x="20" y="5" width="40" height="25" rx="2" fill="#555"/>
+      <rect x="25" y="8" width="30" height="18" rx="2" fill="#e74c3c"/>
+
+      <!-- Contact points -->
+      <circle cx="20" cy="45" r="6" fill="#c9a227"/>
+      <circle cx="60" cy="45" r="6" fill="#c9a227"/>
+
+      <!-- Switch terminals extending down -->
+      <rect x="16" y="55" width="8" height="15" fill="#c9a227"/>
+      <rect x="56" y="55" width="8" height="15" fill="#c9a227"/>
+    </g>
+
+    <!-- Labels for switch pins -->
+    <text x="160" y="280" class="label-small" text-anchor="middle" fill="#1a1a1a">PIN 1</text>
+    <text x="200" y="280" class="label-small" text-anchor="middle" fill="#1a1a1a">PIN 2</text>
+
+    <!-- Wire from switch to ground -->
+    <line x1="200" y1="260" x2="200" y2="290" stroke="#1a1a1a" stroke-width="2"/>
+    <line x1="200" y1="290" x2="320" y2="290" stroke="#1a1a1a" stroke-width="3"/>
+
+    <!-- GND rail -->
+    <line x1="60" y1="290" x2="320" y2="290" stroke="#1a1a1a" stroke-width="3"/>
+    <text x="50" y="294" class="label-small" text-anchor="end" fill="#333">GND</text>
+    <circle cx="320" cy="290" r="4" fill="#1a1a1a" stroke="#666" stroke-width="1"/>
+
+    <!-- State labels -->
+    <g transform="translate(250, 180)">
+      <text x="0" y="0" class="label-small" fill="#1e8449">Released: HIGH (1)</text>
+      <text x="0" y="16" class="label-small" fill="#c0392b">Pressed: LOW (0)</text>
+    </g>
+  </g>
+
+  <!-- ==================== RIGHT SIDE: FULL 6-SWITCH LAYOUT ==================== -->
+
+  <g transform="translate(440, 80)">
+    <rect x="0" y="0" width="430" height="400" rx="8" fill="#fff" stroke="#ccc" stroke-width="2"/>
+    <text x="215" y="25" class="section-title" text-anchor="middle">FULL 6-SWITCH LAYOUT</text>
+    <text x="215" y="42" class="label-small" text-anchor="middle" fill="#666">(common ground rail on breadboard)</text>
+
+    <!-- Raspberry Pi mini representation -->
+    <g transform="translate(20, 60)">
+      <rect x="0" y="0" width="100" height="200" rx="6" fill="#1e5631" stroke="#0d3318" stroke-width="2"/>
+      <text x="50" y="20" class="label-small" text-anchor="middle" fill="#fff">RASPBERRY PI</text>
+
+      <!-- GPIO pins going out -->
+      <g transform="translate(85, 40)">
+        <!-- SW1 - GPIO4 -->
+        <circle cx="0" cy="0" r="5" fill="#e74c3c" stroke="#fff" stroke-width="1"/>
+        <text x="-10" y="4" class="label-small" text-anchor="end" fill="#fff">4</text>
+
+        <!-- SW2 - GPIO14 -->
+        <circle cx="0" cy="22" r="5" fill="#e67e22" stroke="#fff" stroke-width="1"/>
+        <text x="-10" y="26" class="label-small" text-anchor="end" fill="#fff">14</text>
+
+        <!-- SW3 - GPIO15 -->
+        <circle cx="0" cy="44" r="5" fill="#f1c40f" stroke="#fff" stroke-width="1"/>
+        <text x="-10" y="48" class="label-small" text-anchor="end" fill="#fff">15</text>
+
+        <!-- SW4 - GPIO25 -->
+        <circle cx="0" cy="66" r="5" fill="#27ae60" stroke="#fff" stroke-width="1"/>
+        <text x="-10" y="70" class="label-small" text-anchor="end" fill="#fff">25</text>
+
+        <!-- SW5 - GPIO12 -->
+        <circle cx="0" cy="88" r="5" fill="#3498db" stroke="#fff" stroke-width="1"/>
+        <text x="-10" y="92" class="label-small" text-anchor="end" fill="#fff">12</text>
+
+        <!-- SW6 - GPIO16 -->
+        <circle cx="0" cy="110" r="5" fill="#9b59b6" stroke="#fff" stroke-width="1"/>
+        <text x="-10" y="114" class="label-small" text-anchor="end" fill="#fff">16</text>
+
+        <!-- GND pin -->
+        <circle cx="0" cy="145" r="5" fill="#1a1a1a" stroke="#fff" stroke-width="1"/>
+        <text x="-10" y="149" class="label-small" text-anchor="end" fill="#fff">G</text>
+      </g>
+    </g>
+
+    <!-- Breadboard representation -->
+    <g transform="translate(150, 55)">
+      <!-- Breadboard body -->
+      <rect x="0" y="0" width="250" height="210" rx="4" fill="#f5f5dc" stroke="#ccc" stroke-width="2"/>
+
+      <!-- Power rails -->
+      <rect x="10" y="10" width="230" height="15" fill="#ffcccc" stroke="#daa"/>
+      <text x="125" y="21" class="label-small" text-anchor="middle" fill="#a00">+ 3.3V RAIL</text>
+
+      <rect x="10" y="185" width="230" height="15" fill="#cccccc" stroke="#999"/>
+      <text x="125" y="196" class="label-small" text-anchor="middle" fill="#333">— GND RAIL</text>
+
+      <!-- Switch representations (simplified) -->
+      <!-- SW1 -->
+      <g transform="translate(25, 40)">
+        <rect x="0" y="0" width="25" height="25" rx="2" fill="#333"/>
+        <rect x="5" y="5" width="15" height="12" rx="1" fill="#e74c3c"/>
+        <text x="12" y="42" class="label-small" text-anchor="middle" fill="#1a1a1a">SW1</text>
+      </g>
+
+      <!-- SW2 -->
+      <g transform="translate(60, 40)">
+        <rect x="0" y="0" width="25" height="25" rx="2" fill="#333"/>
+        <rect x="5" y="5" width="15" height="12" rx="1" fill="#e67e22"/>
+        <text x="12" y="42" class="label-small" text-anchor="middle" fill="#1a1a1a">SW2</text>
+      </g>
+
+      <!-- SW3 -->
+      <g transform="translate(95, 40)">
+        <rect x="0" y="0" width="25" height="25" rx="2" fill="#333"/>
+        <rect x="5" y="5" width="15" height="12" rx="1" fill="#f1c40f"/>
+        <text x="12" y="42" class="label-small" text-anchor="middle" fill="#1a1a1a">SW3</text>
+      </g>
+
+      <!-- SW4 -->
+      <g transform="translate(135, 40)">
+        <rect x="0" y="0" width="25" height="25" rx="2" fill="#333"/>
+        <rect x="5" y="5" width="15" height="12" rx="1" fill="#27ae60"/>
+        <text x="12" y="42" class="label-small" text-anchor="middle" fill="#1a1a1a">SW4</text>
+      </g>
+
+      <!-- SW5 -->
+      <g transform="translate(170, 40)">
+        <rect x="0" y="0" width="25" height="25" rx="2" fill="#333"/>
+        <rect x="5" y="5" width="15" height="12" rx="1" fill="#3498db"/>
+        <text x="12" y="42" class="label-small" text-anchor="middle" fill="#1a1a1a">SW5</text>
+      </g>
+
+      <!-- SW6 -->
+      <g transform="translate(205, 40)">
+        <rect x="0" y="0" width="25" height="25" rx="2" fill="#333"/>
+        <rect x="5" y="5" width="15" height="12" rx="1" fill="#9b59b6"/>
+        <text x="12" y="42" class="label-small" text-anchor="middle" fill="#1a1a1a">SW6</text>
+      </g>
+
+      <!-- Resistor row -->
+      <g transform="translate(20, 95)">
+        <text x="105" y="0" class="label-small" text-anchor="middle" fill="#666">10kΩ pull-up resistors (optional with internal pull-ups)</text>
+
+        <!-- Resistor symbols -->
+        <rect x="5" y="10" width="6" height="18" fill="#e8d4a8" stroke="#666" stroke-width="1"/>
+        <rect x="42" y="10" width="6" height="18" fill="#e8d4a8" stroke="#666" stroke-width="1"/>
+        <rect x="79" y="10" width="6" height="18" fill="#e8d4a8" stroke="#666" stroke-width="1"/>
+        <rect x="119" y="10" width="6" height="18" fill="#e8d4a8" stroke="#666" stroke-width="1"/>
+        <rect x="156" y="10" width="6" height="18" fill="#e8d4a8" stroke="#666" stroke-width="1"/>
+        <rect x="193" y="10" width="6" height="18" fill="#e8d4a8" stroke="#666" stroke-width="1"/>
+      </g>
+
+      <!-- Connection lines to GND rail -->
+      <g stroke="#666" stroke-width="1" stroke-dasharray="2,2">
+        <line x1="37" y1="65" x2="37" y2="185"/>
+        <line x1="72" y1="65" x2="72" y2="185"/>
+        <line x1="107" y1="65" x2="107" y2="185"/>
+        <line x1="147" y1="65" x2="147" y2="185"/>
+        <line x1="182" y1="65" x2="182" y2="185"/>
+        <line x1="217" y1="65" x2="217" y2="185"/>
+      </g>
+    </g>
+
+    <!-- Wires from Pi to breadboard -->
+    <path d="M 105 100 L 175 95" stroke="#e74c3c" stroke-width="3"/>
+    <path d="M 105 122 L 210 95" stroke="#e67e22" stroke-width="3"/>
+    <path d="M 105 144 L 245 95" stroke="#f1c40f" stroke-width="3"/>
+    <path d="M 105 166 L 285 95" stroke="#27ae60" stroke-width="3"/>
+    <path d="M 105 188 L 320 95" stroke="#3498db" stroke-width="3"/>
+    <path d="M 105 210 L 355 95" stroke="#9b59b6" stroke-width="3"/>
+
+    <!-- GND wire -->
+    <path d="M 105 245 L 130 245 L 130 250 L 275 250" stroke="#1a1a1a" stroke-width="3"/>
+    <text x="280" y="254" class="label-small" fill="#333">→ GND rail</text>
+  </g>
+
+  <!-- ==================== BOTTOM: PIN MAPPING TABLE ==================== -->
+
+  <g transform="translate(30, 500)">
+    <rect x="0" y="0" width="840" height="200" rx="8" fill="#fff" stroke="#bbb" stroke-width="2"/>
+    <text x="420" y="28" class="label" text-anchor="middle" font-weight="bold" fill="#1a1a1a">SWITCH PIN MAPPING</text>
+
+    <!-- Table header -->
+    <g transform="translate(30, 50)">
+      <rect x="0" y="0" width="120" height="25" fill="#eee" stroke="#ccc"/>
+      <text x="60" y="17" class="label-small" text-anchor="middle" font-weight="bold">SWITCH</text>
+
+      <rect x="120" y="0" width="120" height="25" fill="#eee" stroke="#ccc"/>
+      <text x="180" y="17" class="label-small" text-anchor="middle" font-weight="bold">FUNCTION</text>
+
+      <rect x="240" y="0" width="100" height="25" fill="#eee" stroke="#ccc"/>
+      <text x="290" y="17" class="label-small" text-anchor="middle" font-weight="bold">GPIO</text>
+
+      <rect x="340" y="0" width="80" height="25" fill="#eee" stroke="#ccc"/>
+      <text x="380" y="17" class="label-small" text-anchor="middle" font-weight="bold">PIN #</text>
+
+      <rect x="420" y="0" width="100" height="25" fill="#eee" stroke="#ccc"/>
+      <text x="470" y="17" class="label-small" text-anchor="middle" font-weight="bold">COLOR</text>
+    </g>
+
+    <!-- Row 1 - SW1 -->
+    <g transform="translate(30, 75)">
+      <rect x="0" y="0" width="120" height="22" fill="#fff" stroke="#ddd"/>
+      <text x="60" y="15" class="label-small" text-anchor="middle">Switch 1</text>
+
+      <rect x="120" y="0" width="120" height="22" fill="#fff" stroke="#ddd"/>
+      <text x="180" y="15" class="label-small" text-anchor="middle">Preset 1</text>
+
+      <rect x="240" y="0" width="100" height="22" fill="#fff" stroke="#ddd"/>
+      <text x="290" y="15" class="label-small" text-anchor="middle">GPIO4</text>
+
+      <rect x="340" y="0" width="80" height="22" fill="#fff" stroke="#ddd"/>
+      <text x="380" y="15" class="label-small" text-anchor="middle">Pin 7</text>
+
+      <rect x="420" y="0" width="100" height="22" fill="#fff" stroke="#ddd"/>
+      <rect x="450" y="4" width="40" height="14" fill="#e74c3c" rx="2"/>
+    </g>
+
+    <!-- Row 2 - SW2 -->
+    <g transform="translate(30, 97)">
+      <rect x="0" y="0" width="120" height="22" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="60" y="15" class="label-small" text-anchor="middle">Switch 2</text>
+
+      <rect x="120" y="0" width="120" height="22" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="180" y="15" class="label-small" text-anchor="middle">Preset 2</text>
+
+      <rect x="240" y="0" width="100" height="22" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="290" y="15" class="label-small" text-anchor="middle">GPIO14</text>
+
+      <rect x="340" y="0" width="80" height="22" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="380" y="15" class="label-small" text-anchor="middle">Pin 8</text>
+
+      <rect x="420" y="0" width="100" height="22" fill="#f9f9f9" stroke="#ddd"/>
+      <rect x="450" y="4" width="40" height="14" fill="#e67e22" rx="2"/>
+    </g>
+
+    <!-- Row 3 - SW3 -->
+    <g transform="translate(30, 119)">
+      <rect x="0" y="0" width="120" height="22" fill="#fff" stroke="#ddd"/>
+      <text x="60" y="15" class="label-small" text-anchor="middle">Switch 3</text>
+
+      <rect x="120" y="0" width="120" height="22" fill="#fff" stroke="#ddd"/>
+      <text x="180" y="15" class="label-small" text-anchor="middle">Preset 3</text>
+
+      <rect x="240" y="0" width="100" height="22" fill="#fff" stroke="#ddd"/>
+      <text x="290" y="15" class="label-small" text-anchor="middle">GPIO15</text>
+
+      <rect x="340" y="0" width="80" height="22" fill="#fff" stroke="#ddd"/>
+      <text x="380" y="15" class="label-small" text-anchor="middle">Pin 10</text>
+
+      <rect x="420" y="0" width="100" height="22" fill="#fff" stroke="#ddd"/>
+      <rect x="450" y="4" width="40" height="14" fill="#f1c40f" rx="2"/>
+    </g>
+
+    <!-- Row 4 - SW4 -->
+    <g transform="translate(30, 141)">
+      <rect x="0" y="0" width="120" height="22" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="60" y="15" class="label-small" text-anchor="middle">Switch 4</text>
+
+      <rect x="120" y="0" width="120" height="22" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="180" y="15" class="label-small" text-anchor="middle">Octave Up</text>
+
+      <rect x="240" y="0" width="100" height="22" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="290" y="15" class="label-small" text-anchor="middle">GPIO25</text>
+
+      <rect x="340" y="0" width="80" height="22" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="380" y="15" class="label-small" text-anchor="middle">Pin 22</text>
+
+      <rect x="420" y="0" width="100" height="22" fill="#f9f9f9" stroke="#ddd"/>
+      <rect x="450" y="4" width="40" height="14" fill="#27ae60" rx="2"/>
+    </g>
+
+    <!-- Row 5 - SW5 -->
+    <g transform="translate(30, 163)">
+      <rect x="0" y="0" width="120" height="22" fill="#fff" stroke="#ddd"/>
+      <text x="60" y="15" class="label-small" text-anchor="middle">Switch 5</text>
+
+      <rect x="120" y="0" width="120" height="22" fill="#fff" stroke="#ddd"/>
+      <text x="180" y="15" class="label-small" text-anchor="middle">Octave Down</text>
+
+      <rect x="240" y="0" width="100" height="22" fill="#fff" stroke="#ddd"/>
+      <text x="290" y="15" class="label-small" text-anchor="middle">GPIO12</text>
+
+      <rect x="340" y="0" width="80" height="22" fill="#fff" stroke="#ddd"/>
+      <text x="380" y="15" class="label-small" text-anchor="middle">Pin 32</text>
+
+      <rect x="420" y="0" width="100" height="22" fill="#fff" stroke="#ddd"/>
+      <rect x="450" y="4" width="40" height="14" fill="#3498db" rx="2"/>
+    </g>
+
+    <!-- Row 6 - SW6 -->
+    <g transform="translate(30, 185)">
+      <rect x="0" y="0" width="120" height="22" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="60" y="15" class="label-small" text-anchor="middle">Switch 6</text>
+
+      <rect x="120" y="0" width="120" height="22" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="180" y="15" class="label-small" text-anchor="middle">Effect Toggle</text>
+
+      <rect x="240" y="0" width="100" height="22" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="290" y="15" class="label-small" text-anchor="middle">GPIO16</text>
+
+      <rect x="340" y="0" width="80" height="22" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="380" y="15" class="label-small" text-anchor="middle">Pin 36</text>
+
+      <rect x="420" y="0" width="100" height="22" fill="#f9f9f9" stroke="#ddd"/>
+      <rect x="450" y="4" width="40" height="14" fill="#9b59b6" rx="2"/>
+    </g>
+
+    <!-- Notes section -->
+    <g transform="translate(560, 55)">
+      <rect x="0" y="0" width="250" height="140" rx="4" fill="#f0f8ff" stroke="#4a90d9" stroke-width="1"/>
+      <text x="125" y="20" class="label-small" text-anchor="middle" font-weight="bold" fill="#2c5aa0">WIRING NOTES</text>
+
+      <text x="15" y="45" class="label-small" fill="#333">• One pin → GPIO</text>
+      <text x="15" y="62" class="label-small" fill="#333">• Other pin → GND</text>
+      <text x="15" y="82" class="label-small" fill="#333">• Internal pull-ups: enabled</text>
+      <text x="15" y="99" class="label-small" fill="#333">  in software (recommended)</text>
+      <text x="15" y="119" class="label-small" fill="#333">• External 10kΩ pull-ups:</text>
+      <text x="15" y="136" class="label-small" fill="#333">  optional for extra stability</text>
+    </g>
+  </g>
+
+  <!-- Footer note -->
+  <text x="450" y="730" class="label-small" text-anchor="middle" fill="#666">
+    Tactile switches are normally-open (NO). Pressing connects the two pins. Use INPUT_PULLUP in software.
+  </text>
+</svg>
