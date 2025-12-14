@@ -1,0 +1,422 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 950 800">
+  <defs>
+    <style>
+      .label { font-family: 'Courier New', monospace; font-size: 12px; fill: #1a1a1a; }
+      .label-small { font-family: 'Courier New', monospace; font-size: 10px; fill: #333; }
+      .label-tiny { font-family: 'Courier New', monospace; font-size: 8px; fill: #555; }
+      .label-white { font-family: 'Courier New', monospace; font-size: 10px; fill: #fff; }
+      .title { font-family: 'Arial', sans-serif; font-size: 18px; font-weight: bold; fill: #1a1a1a; }
+      .subtitle { font-family: 'Arial', sans-serif; font-size: 12px; fill: #444; }
+      .pin-label { font-family: 'Courier New', monospace; font-size: 9px; fill: #fff; text-anchor: middle; }
+      .chip-pin { font-family: 'Courier New', monospace; font-size: 9px; fill: #1a1a1a; }
+      .wire-label { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: bold; }
+      .section-title { font-family: 'Arial', sans-serif; font-size: 14px; font-weight: bold; fill: #1a1a1a; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="950" height="800" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="475" y="35" class="title" text-anchor="middle">MCP3008 ADC + Analog Joystick Wiring</text>
+  <text x="475" y="55" class="subtitle" text-anchor="middle">The Gnarl Pi - Diagram 4 of 5 | SPI Interface + Dual-Axis Analog Input</text>
+
+  <!-- ==================== RASPBERRY PI ==================== -->
+  <g transform="translate(30, 90)">
+    <rect x="0" y="0" width="200" height="340" rx="8" fill="#1e5631" stroke="#0d3318" stroke-width="2"/>
+    <text x="100" y="25" class="label" text-anchor="middle" fill="#fff">RASPBERRY PI 3</text>
+
+    <!-- GPIO Header -->
+    <rect x="130" y="45" width="60" height="280" rx="2" fill="#222"/>
+
+    <!-- Left column pins -->
+    <g transform="translate(142, 58)">
+      <!-- Pin 1 - 3V3 -->
+      <circle cx="0" cy="0" r="5" fill="#ff6b6b"/>
+      <text x="-10" y="4" class="label-tiny" text-anchor="end" fill="#fff">3V3</text>
+
+      <!-- Pins down the left side -->
+      <circle cx="0" cy="14" r="4" fill="#555"/> <!-- 3 -->
+      <circle cx="0" cy="28" r="4" fill="#555"/> <!-- 5 -->
+      <circle cx="0" cy="42" r="4" fill="#555"/> <!-- 7 -->
+      <circle cx="0" cy="56" r="4" fill="#555"/> <!-- 9 GND -->
+      <circle cx="0" cy="70" r="4" fill="#555"/> <!-- 11 -->
+      <circle cx="0" cy="84" r="4" fill="#555"/> <!-- 13 -->
+      <circle cx="0" cy="98" r="4" fill="#555"/> <!-- 15 -->
+      <circle cx="0" cy="112" r="4" fill="#555"/> <!-- 17 -->
+
+      <!-- Pin 19 - GPIO10 MOSI -->
+      <circle cx="0" cy="126" r="6" fill="#e74c3c" stroke="#fff" stroke-width="2"/>
+      <text x="-10" y="130" class="label-tiny" text-anchor="end" fill="#fff">MOSI</text>
+
+      <!-- Pin 21 - GPIO9 MISO -->
+      <circle cx="0" cy="140" r="6" fill="#3498db" stroke="#fff" stroke-width="2"/>
+      <text x="-10" y="144" class="label-tiny" text-anchor="end" fill="#fff">MISO</text>
+
+      <!-- Pin 23 - GPIO11 SCLK -->
+      <circle cx="0" cy="154" r="6" fill="#f39c12" stroke="#fff" stroke-width="2"/>
+      <text x="-10" y="158" class="label-tiny" text-anchor="end" fill="#fff">SCLK</text>
+
+      <!-- Pin 25 - GND -->
+      <circle cx="0" cy="168" r="4" fill="#333"/>
+
+      <circle cx="0" cy="182" r="4" fill="#555"/> <!-- 27 -->
+      <circle cx="0" cy="196" r="4" fill="#555"/> <!-- 29 -->
+      <circle cx="0" cy="210" r="4" fill="#555"/> <!-- 31 -->
+      <circle cx="0" cy="224" r="4" fill="#555"/> <!-- 33 -->
+      <circle cx="0" cy="238" r="4" fill="#555"/> <!-- 35 -->
+
+      <!-- Pin 37 - GPIO26 Joystick SW -->
+      <circle cx="0" cy="252" r="6" fill="#9b59b6" stroke="#fff" stroke-width="2"/>
+      <text x="-10" y="256" class="label-tiny" text-anchor="end" fill="#fff">JS_SW</text>
+    </g>
+
+    <!-- Right column pins -->
+    <g transform="translate(178, 58)">
+      <!-- Pin 2 - 5V -->
+      <circle cx="0" cy="0" r="4" fill="#c0392b"/>
+
+      <circle cx="0" cy="14" r="4" fill="#c0392b"/> <!-- 4 -->
+
+      <!-- Pin 6 - GND -->
+      <circle cx="0" cy="28" r="5" fill="#1a1a1a" stroke="#666" stroke-width="1"/>
+      <text x="10" y="32" class="label-tiny" fill="#fff">GND</text>
+
+      <circle cx="0" cy="42" r="4" fill="#555"/> <!-- 8 -->
+      <circle cx="0" cy="56" r="4" fill="#555"/> <!-- 10 -->
+      <circle cx="0" cy="70" r="4" fill="#555"/> <!-- 12 -->
+      <circle cx="0" cy="84" r="4" fill="#555"/> <!-- 14 -->
+      <circle cx="0" cy="98" r="4" fill="#555"/> <!-- 16 -->
+      <circle cx="0" cy="112" r="4" fill="#555"/> <!-- 18 -->
+      <circle cx="0" cy="126" r="4" fill="#333"/> <!-- 20 GND -->
+
+      <circle cx="0" cy="140" r="4" fill="#555"/> <!-- 22 -->
+
+      <!-- Pin 24 - GPIO8 CE0 (CS) -->
+      <circle cx="0" cy="154" r="6" fill="#27ae60" stroke="#fff" stroke-width="2"/>
+      <text x="10" y="158" class="label-tiny" fill="#fff">CS</text>
+
+      <circle cx="0" cy="168" r="4" fill="#555"/> <!-- 26 -->
+      <circle cx="0" cy="182" r="4" fill="#555"/> <!-- 28 -->
+      <circle cx="0" cy="196" r="4" fill="#333"/> <!-- 30 GND -->
+      <circle cx="0" cy="210" r="4" fill="#555"/> <!-- 32 -->
+      <circle cx="0" cy="224" r="4" fill="#333"/> <!-- 34 GND -->
+      <circle cx="0" cy="238" r="4" fill="#555"/> <!-- 36 -->
+      <circle cx="0" cy="252" r="4" fill="#555"/> <!-- 38 -->
+    </g>
+
+    <!-- SPI label -->
+    <text x="65" y="220" class="label-small" fill="#98c379" text-anchor="middle">SPI0</text>
+    <text x="65" y="235" class="label-small" fill="#98c379" text-anchor="middle">ACTIVE</text>
+  </g>
+
+  <!-- ==================== MCP3008 CHIP ==================== -->
+  <g transform="translate(340, 120)">
+    <!-- Chip body -->
+    <rect x="0" y="0" width="180" height="260" rx="4" fill="#1a1a1a" stroke="#333" stroke-width="2"/>
+
+    <!-- Notch for orientation -->
+    <ellipse cx="90" cy="0" rx="15" ry="8" fill="#333"/>
+
+    <!-- Pin 1 indicator dot -->
+    <circle cx="25" cy="25" r="6" fill="#444"/>
+
+    <!-- Chip label -->
+    <text x="90" y="125" class="label" text-anchor="middle" fill="#aaa">MCP3008</text>
+    <text x="90" y="145" class="label-small" text-anchor="middle" fill="#666">8-CH 10-BIT ADC</text>
+
+    <!-- Left side pins (1-8) -->
+    <g transform="translate(-25, 35)">
+      <!-- Pin 1 - CH0 -->
+      <rect x="0" y="0" width="25" height="10" fill="#c9a227"/>
+      <text x="35" y="9" class="chip-pin" fill="#fff">CH0</text>
+      <text x="-5" y="9" class="chip-pin" text-anchor="end" fill="#1a1a1a">1</text>
+
+      <!-- Pin 2 - CH1 -->
+      <rect x="0" y="25" width="25" height="10" fill="#c9a227"/>
+      <text x="35" y="34" class="chip-pin" fill="#fff">CH1</text>
+      <text x="-5" y="34" class="chip-pin" text-anchor="end" fill="#1a1a1a">2</text>
+
+      <!-- Pin 3 - CH2 -->
+      <rect x="0" y="50" width="25" height="10" fill="#c9a227"/>
+      <text x="35" y="59" class="chip-pin" fill="#fff">CH2</text>
+      <text x="-5" y="59" class="chip-pin" text-anchor="end" fill="#1a1a1a">3</text>
+
+      <!-- Pin 4 - CH3 -->
+      <rect x="0" y="75" width="25" height="10" fill="#c9a227"/>
+      <text x="35" y="84" class="chip-pin" fill="#fff">CH3</text>
+      <text x="-5" y="84" class="chip-pin" text-anchor="end" fill="#1a1a1a">4</text>
+
+      <!-- Pin 5 - CH4 -->
+      <rect x="0" y="100" width="25" height="10" fill="#c9a227"/>
+      <text x="35" y="109" class="chip-pin" fill="#fff">CH4</text>
+      <text x="-5" y="109" class="chip-pin" text-anchor="end" fill="#1a1a1a">5</text>
+
+      <!-- Pin 6 - CH5 -->
+      <rect x="0" y="125" width="25" height="10" fill="#c9a227"/>
+      <text x="35" y="134" class="chip-pin" fill="#fff">CH5</text>
+      <text x="-5" y="134" class="chip-pin" text-anchor="end" fill="#1a1a1a">6</text>
+
+      <!-- Pin 7 - CH6 -->
+      <rect x="0" y="150" width="25" height="10" fill="#c9a227"/>
+      <text x="35" y="159" class="chip-pin" fill="#fff">CH6</text>
+      <text x="-5" y="159" class="chip-pin" text-anchor="end" fill="#1a1a1a">7</text>
+
+      <!-- Pin 8 - CH7 -->
+      <rect x="0" y="175" width="25" height="10" fill="#c9a227"/>
+      <text x="35" y="184" class="chip-pin" fill="#fff">CH7</text>
+      <text x="-5" y="184" class="chip-pin" text-anchor="end" fill="#1a1a1a">8</text>
+    </g>
+
+    <!-- Right side pins (16-9, top to bottom) -->
+    <g transform="translate(180, 35)">
+      <!-- Pin 16 - VDD -->
+      <rect x="0" y="0" width="25" height="10" fill="#ff6b6b"/>
+      <text x="-10" y="9" class="chip-pin" text-anchor="end" fill="#fff">VDD</text>
+      <text x="30" y="9" class="chip-pin" fill="#1a1a1a">16</text>
+
+      <!-- Pin 15 - VREF -->
+      <rect x="0" y="25" width="25" height="10" fill="#ff6b6b"/>
+      <text x="-10" y="34" class="chip-pin" text-anchor="end" fill="#fff">VREF</text>
+      <text x="30" y="34" class="chip-pin" fill="#1a1a1a">15</text>
+
+      <!-- Pin 14 - AGND -->
+      <rect x="0" y="50" width="25" height="10" fill="#333" stroke="#666" stroke-width="1"/>
+      <text x="-10" y="59" class="chip-pin" text-anchor="end" fill="#fff">AGND</text>
+      <text x="30" y="59" class="chip-pin" fill="#1a1a1a">14</text>
+
+      <!-- Pin 13 - CLK -->
+      <rect x="0" y="75" width="25" height="10" fill="#f39c12"/>
+      <text x="-10" y="84" class="chip-pin" text-anchor="end" fill="#fff">CLK</text>
+      <text x="30" y="84" class="chip-pin" fill="#1a1a1a">13</text>
+
+      <!-- Pin 12 - DOUT -->
+      <rect x="0" y="100" width="25" height="10" fill="#3498db"/>
+      <text x="-10" y="109" class="chip-pin" text-anchor="end" fill="#fff">DOUT</text>
+      <text x="30" y="109" class="chip-pin" fill="#1a1a1a">12</text>
+
+      <!-- Pin 11 - DIN -->
+      <rect x="0" y="125" width="25" height="10" fill="#e74c3c"/>
+      <text x="-10" y="134" class="chip-pin" text-anchor="end" fill="#fff">DIN</text>
+      <text x="30" y="134" class="chip-pin" fill="#1a1a1a">11</text>
+
+      <!-- Pin 10 - CS -->
+      <rect x="0" y="150" width="25" height="10" fill="#27ae60"/>
+      <text x="-10" y="159" class="chip-pin" text-anchor="end" fill="#fff">CS</text>
+      <text x="30" y="159" class="chip-pin" fill="#1a1a1a">10</text>
+
+      <!-- Pin 9 - DGND -->
+      <rect x="0" y="175" width="25" height="10" fill="#333" stroke="#666" stroke-width="1"/>
+      <text x="-10" y="184" class="chip-pin" text-anchor="end" fill="#fff">DGND</text>
+      <text x="30" y="184" class="chip-pin" fill="#1a1a1a">9</text>
+    </g>
+  </g>
+
+  <!-- ==================== JOYSTICK MODULE ==================== -->
+  <g transform="translate(680, 100)">
+    <!-- PCB -->
+    <rect x="0" y="0" width="200" height="250" rx="6" fill="#1a4d1a" stroke="#0d260d" stroke-width="2"/>
+    <text x="100" y="25" class="label" text-anchor="middle" fill="#fff">B103 JOYSTICK</text>
+    <text x="100" y="42" class="label-small" text-anchor="middle" fill="#aaa">Dual-Axis Analog</text>
+
+    <!-- Joystick mechanism -->
+    <circle cx="100" cy="120" r="60" fill="#333" stroke="#222" stroke-width="3"/>
+    <circle cx="100" cy="120" r="45" fill="#444"/>
+    <circle cx="100" cy="120" r="25" fill="#222"/>
+
+    <!-- Stick cap -->
+    <ellipse cx="100" cy="115" rx="18" ry="12" fill="#555"/>
+    <ellipse cx="100" cy="112" rx="15" ry="8" fill="#666"/>
+
+    <!-- Axis indicators -->
+    <text x="30" y="125" class="label-small" fill="#98c379">←X→</text>
+    <text x="100" y="65" class="label-small" text-anchor="middle" fill="#98c379">↑</text>
+    <text x="100" y="180" class="label-small" text-anchor="middle" fill="#98c379">Y↓</text>
+
+    <!-- Pin header -->
+    <g transform="translate(30, 200)">
+      <rect x="0" y="0" width="28" height="30" fill="#c9a227"/>
+      <text x="14" y="45" class="label-small" text-anchor="middle" fill="#1a1a1a">GND</text>
+
+      <rect x="35" y="0" width="28" height="30" fill="#ff6b6b"/>
+      <text x="49" y="45" class="label-small" text-anchor="middle" fill="#1a1a1a">+5V</text>
+
+      <rect x="70" y="0" width="28" height="30" fill="#e67e22"/>
+      <text x="84" y="45" class="label-small" text-anchor="middle" fill="#1a1a1a">VRx</text>
+
+      <rect x="105" y="0" width="28" height="30" fill="#f1c40f"/>
+      <text x="119" y="45" class="label-small" text-anchor="middle" fill="#1a1a1a">VRy</text>
+
+      <rect x="140" y="0" width="28" height="30" fill="#9b59b6"/>
+      <text x="154" y="45" class="label-small" text-anchor="middle" fill="#1a1a1a">SW</text>
+    </g>
+  </g>
+
+  <!-- ==================== SPI WIRES ==================== -->
+
+  <!-- MOSI (Red) - GPIO10 to DIN -->
+  <path d="M 172 216 L 250 216 L 250 280 L 545 280 L 545 195" fill="none" stroke="#e74c3c" stroke-width="3" stroke-linecap="round"/>
+  <text x="380" y="275" class="wire-label" fill="#c0392b">MOSI → DIN</text>
+
+  <!-- MISO (Blue) - GPIO9 to DOUT -->
+  <path d="M 172 230 L 260 230 L 260 260 L 555 260 L 555 170" fill="none" stroke="#3498db" stroke-width="3" stroke-linecap="round"/>
+  <text x="380" y="255" class="wire-label" fill="#2980b9">MISO ← DOUT</text>
+
+  <!-- SCLK (Orange) - GPIO11 to CLK -->
+  <path d="M 172 244 L 270 244 L 270 240 L 565 240 L 565 145" fill="none" stroke="#f39c12" stroke-width="3" stroke-linecap="round"/>
+  <text x="380" y="235" class="wire-label" fill="#d68910">SCLK → CLK</text>
+
+  <!-- CS (Green) - GPIO8 to CS -->
+  <path d="M 208 244 L 280 244 L 280 220 L 575 220 L 575 220" fill="none" stroke="#27ae60" stroke-width="3" stroke-linecap="round"/>
+  <text x="400" y="215" class="wire-label" fill="#1e8449">CS → CS</text>
+
+  <!-- ==================== POWER WIRES ==================== -->
+
+  <!-- 3.3V to VDD and VREF -->
+  <path d="M 172 148 L 240 148 L 240 100 L 600 100 L 600 155 L 545 155" fill="none" stroke="#ff6b6b" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 600 155 L 600 180 L 545 180" fill="none" stroke="#ff6b6b" stroke-width="3" stroke-linecap="round"/>
+  <text x="420" y="95" class="wire-label" fill="#cc4444">3.3V → VDD, VREF</text>
+
+  <!-- GND to AGND and DGND -->
+  <path d="M 208 176 L 290 176 L 290 400 L 600 400 L 600 245 L 545 245" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 600 320 L 545 320 L 545 205" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+  <text x="430" y="395" class="wire-label" fill="#333">GND → AGND, DGND</text>
+
+  <!-- ==================== JOYSTICK TO MCP3008 WIRES ==================== -->
+
+  <!-- VRx (Orange) - Joystick to CH0 -->
+  <path d="M 764 300 L 764 420 L 280 420 L 280 155 L 315 155" fill="none" stroke="#e67e22" stroke-width="3" stroke-linecap="round"/>
+  <text x="500" y="435" class="wire-label" fill="#d35400">VRx → CH0</text>
+
+  <!-- VRy (Yellow) - Joystick to CH1 -->
+  <path d="M 799 300 L 799 440 L 260 440 L 260 180 L 315 180" fill="none" stroke="#f1c40f" stroke-width="3" stroke-linecap="round"/>
+  <text x="500" y="455" class="wire-label" fill="#b7950b">VRy → CH1</text>
+
+  <!-- Joystick GND -->
+  <path d="M 710 300 L 710 460 L 600 460 L 600 400" fill="none" stroke="#1a1a1a" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="600" cy="400" r="4" fill="#1a1a1a"/>
+
+  <!-- Joystick SW (Purple) - Direct to GPIO26 -->
+  <path d="M 834 300 L 834 500 L 100 500 L 100 400 L 172 400 L 172 342" fill="none" stroke="#9b59b6" stroke-width="3" stroke-linecap="round"/>
+  <text x="450" y="515" class="wire-label" fill="#8e44ad">SW → GPIO26 (direct to Pi)</text>
+
+  <!-- ==================== LEGEND AND NOTES ==================== -->
+
+  <g transform="translate(30, 540)">
+    <rect x="0" y="0" width="450" height="220" rx="8" fill="#fff" stroke="#bbb" stroke-width="2"/>
+    <text x="225" y="25" class="label" text-anchor="middle" font-weight="bold" fill="#1a1a1a">SPI PIN MAPPING</text>
+
+    <!-- Table -->
+    <g transform="translate(20, 45)">
+      <rect x="0" y="0" width="100" height="22" fill="#eee" stroke="#ccc"/>
+      <text x="50" y="15" class="label-small" text-anchor="middle" font-weight="bold">SIGNAL</text>
+
+      <rect x="100" y="0" width="80" height="22" fill="#eee" stroke="#ccc"/>
+      <text x="140" y="15" class="label-small" text-anchor="middle" font-weight="bold">MCP3008</text>
+
+      <rect x="180" y="0" width="80" height="22" fill="#eee" stroke="#ccc"/>
+      <text x="220" y="15" class="label-small" text-anchor="middle" font-weight="bold">PI GPIO</text>
+
+      <rect x="260" y="0" width="70" height="22" fill="#eee" stroke="#ccc"/>
+      <text x="295" y="15" class="label-small" text-anchor="middle" font-weight="bold">PI PIN</text>
+
+      <rect x="330" y="0" width="80" height="22" fill="#eee" stroke="#ccc"/>
+      <text x="370" y="15" class="label-small" text-anchor="middle" font-weight="bold">COLOR</text>
+    </g>
+
+    <!-- MOSI row -->
+    <g transform="translate(20, 67)">
+      <rect x="0" y="0" width="100" height="20" fill="#fff" stroke="#ddd"/>
+      <text x="50" y="14" class="label-small" text-anchor="middle">MOSI</text>
+      <rect x="100" y="0" width="80" height="20" fill="#fff" stroke="#ddd"/>
+      <text x="140" y="14" class="label-small" text-anchor="middle">Pin 11 (DIN)</text>
+      <rect x="180" y="0" width="80" height="20" fill="#fff" stroke="#ddd"/>
+      <text x="220" y="14" class="label-small" text-anchor="middle">GPIO10</text>
+      <rect x="260" y="0" width="70" height="20" fill="#fff" stroke="#ddd"/>
+      <text x="295" y="14" class="label-small" text-anchor="middle">19</text>
+      <rect x="330" y="0" width="80" height="20" fill="#fff" stroke="#ddd"/>
+      <rect x="355" y="4" width="30" height="12" fill="#e74c3c" rx="2"/>
+    </g>
+
+    <!-- MISO row -->
+    <g transform="translate(20, 87)">
+      <rect x="0" y="0" width="100" height="20" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="50" y="14" class="label-small" text-anchor="middle">MISO</text>
+      <rect x="100" y="0" width="80" height="20" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="140" y="14" class="label-small" text-anchor="middle">Pin 12 (DOUT)</text>
+      <rect x="180" y="0" width="80" height="20" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="220" y="14" class="label-small" text-anchor="middle">GPIO9</text>
+      <rect x="260" y="0" width="70" height="20" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="295" y="14" class="label-small" text-anchor="middle">21</text>
+      <rect x="330" y="0" width="80" height="20" fill="#f9f9f9" stroke="#ddd"/>
+      <rect x="355" y="4" width="30" height="12" fill="#3498db" rx="2"/>
+    </g>
+
+    <!-- SCLK row -->
+    <g transform="translate(20, 107)">
+      <rect x="0" y="0" width="100" height="20" fill="#fff" stroke="#ddd"/>
+      <text x="50" y="14" class="label-small" text-anchor="middle">SCLK</text>
+      <rect x="100" y="0" width="80" height="20" fill="#fff" stroke="#ddd"/>
+      <text x="140" y="14" class="label-small" text-anchor="middle">Pin 13 (CLK)</text>
+      <rect x="180" y="0" width="80" height="20" fill="#fff" stroke="#ddd"/>
+      <text x="220" y="14" class="label-small" text-anchor="middle">GPIO11</text>
+      <rect x="260" y="0" width="70" height="20" fill="#fff" stroke="#ddd"/>
+      <text x="295" y="14" class="label-small" text-anchor="middle">23</text>
+      <rect x="330" y="0" width="80" height="20" fill="#fff" stroke="#ddd"/>
+      <rect x="355" y="4" width="30" height="12" fill="#f39c12" rx="2"/>
+    </g>
+
+    <!-- CS row -->
+    <g transform="translate(20, 127)">
+      <rect x="0" y="0" width="100" height="20" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="50" y="14" class="label-small" text-anchor="middle">CS (CE0)</text>
+      <rect x="100" y="0" width="80" height="20" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="140" y="14" class="label-small" text-anchor="middle">Pin 10 (CS)</text>
+      <rect x="180" y="0" width="80" height="20" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="220" y="14" class="label-small" text-anchor="middle">GPIO8</text>
+      <rect x="260" y="0" width="70" height="20" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="295" y="14" class="label-small" text-anchor="middle">24</text>
+      <rect x="330" y="0" width="80" height="20" fill="#f9f9f9" stroke="#ddd"/>
+      <rect x="355" y="4" width="30" height="12" fill="#27ae60" rx="2"/>
+    </g>
+
+    <!-- Power rows -->
+    <g transform="translate(20, 155)">
+      <text x="0" y="14" class="label-small" fill="#1a1a1a">POWER:</text>
+      <text x="60" y="14" class="label-small" fill="#555">VDD (16), VREF (15) → 3.3V</text>
+      <text x="60" y="30" class="label-small" fill="#555">AGND (14), DGND (9) → GND</text>
+    </g>
+
+    <!-- Joystick info -->
+    <g transform="translate(20, 195)">
+      <text x="0" y="14" class="label-small" fill="#1a1a1a">JOYSTICK:</text>
+      <text x="70" y="14" class="label-small" fill="#555">VRx→CH0, VRy→CH1, SW→GPIO26</text>
+    </g>
+  </g>
+
+  <!-- Notes box -->
+  <g transform="translate(500, 540)">
+    <rect x="0" y="0" width="420" height="220" rx="8" fill="#fff" stroke="#bbb" stroke-width="2"/>
+    <text x="210" y="25" class="label" text-anchor="middle" font-weight="bold" fill="#1a1a1a">IMPORTANT NOTES</text>
+
+    <g transform="translate(20, 45)">
+      <rect x="0" y="0" width="380" height="80" rx="4" fill="#fff3cd" stroke="#ffc107" stroke-width="1"/>
+      <text x="10" y="18" class="label-small" fill="#856404" font-weight="bold">⚠ VOLTAGE WARNING</text>
+      <text x="10" y="36" class="label-small" fill="#856404">If joystick outputs 5V, use voltage divider:</text>
+      <text x="10" y="52" class="label-small" fill="#856404">VRx ──[10kΩ]──┬── CH0</text>
+      <text x="10" y="68" class="label-small" fill="#856404">              └─[10kΩ]── GND</text>
+    </g>
+
+    <g transform="translate(20, 135)">
+      <rect x="0" y="0" width="380" height="70" rx="4" fill="#1a1a2e" stroke="#333" stroke-width="1"/>
+      <text x="190" y="18" class="label-small" text-anchor="middle" fill="#98c379">ENABLE SPI</text>
+      <text x="10" y="38" class="label-small" fill="#e5c07b">$ sudo raspi-config</text>
+      <text x="10" y="54" class="label-small" fill="#666"># Interface Options → SPI → Enable</text>
+    </g>
+  </g>
+
+  <!-- Footer -->
+  <text x="475" y="780" class="label-small" text-anchor="middle" fill="#666">
+    MCP3008 reads 0-1023 (10-bit). Center joystick ≈ 512. Joystick button (SW) is digital, direct to GPIO.
+  </text>
+</svg>
