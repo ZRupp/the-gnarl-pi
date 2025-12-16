@@ -1,0 +1,487 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 850">
+  <defs>
+    <style>
+      .label { font-family: 'Courier New', monospace; font-size: 12px; fill: #1a1a1a; }
+      .label-small { font-family: 'Courier New', monospace; font-size: 10px; fill: #333; }
+      .label-tiny { font-family: 'Courier New', monospace; font-size: 8px; fill: #555; }
+      .label-white { font-family: 'Courier New', monospace; font-size: 10px; fill: #fff; }
+      .title { font-family: 'Arial', sans-serif; font-size: 18px; font-weight: bold; fill: #1a1a1a; }
+      .subtitle { font-family: 'Arial', sans-serif; font-size: 12px; fill: #444; }
+      .pin-label { font-family: 'Courier New', monospace; font-size: 9px; fill: #fff; text-anchor: middle; }
+      .chip-pin { font-family: 'Courier New', monospace; font-size: 8px; fill: #1a1a1a; }
+      .chip-label { font-family: 'Courier New', monospace; font-size: 9px; fill: #fff; }
+      .wire-label { font-family: 'Arial', sans-serif; font-size: 10px; font-weight: bold; }
+      .section-title { font-family: 'Arial', sans-serif; font-size: 14px; font-weight: bold; fill: #1a1a1a; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="850" fill="#fafafa"/>
+
+  <!-- Title -->
+  <text x="500" y="35" class="title" text-anchor="middle">SN74HC595 Shift Registers (LED Control)</text>
+  <text x="500" y="55" class="subtitle" text-anchor="middle">The Gnarl Pi - Diagram 5 of 5 | 3 Chained Chips = 24 LED Outputs</text>
+
+  <!-- ==================== RASPBERRY PI ==================== -->
+  <g transform="translate(30, 100)">
+    <rect x="0" y="0" width="160" height="260" rx="8" fill="#1e5631" stroke="#0d3318" stroke-width="2"/>
+    <text x="80" y="25" class="label" text-anchor="middle" fill="#fff">RASPBERRY PI</text>
+
+    <!-- GPIO Header -->
+    <rect x="100" y="45" width="50" height="200" rx="2" fill="#222"/>
+
+    <!-- Left column pins -->
+    <g transform="translate(112, 55)">
+      <circle cx="0" cy="0" r="4" fill="#ff6b6b"/> <!-- 1 - 3V3 -->
+      <circle cx="0" cy="14" r="4" fill="#555"/> <!-- 3 -->
+      <circle cx="0" cy="28" r="4" fill="#555"/> <!-- 5 -->
+      <circle cx="0" cy="42" r="4" fill="#555"/> <!-- 7 -->
+      <circle cx="0" cy="56" r="4" fill="#555"/> <!-- 9 -->
+      <circle cx="0" cy="70" r="4" fill="#555"/> <!-- 11 -->
+      <circle cx="0" cy="84" r="4" fill="#555"/> <!-- 13 -->
+      <circle cx="0" cy="98" r="4" fill="#555"/> <!-- 15 -->
+      <circle cx="0" cy="112" r="4" fill="#555"/> <!-- 17 -->
+      <circle cx="0" cy="126" r="4" fill="#555"/> <!-- 19 -->
+      <circle cx="0" cy="140" r="4" fill="#555"/> <!-- 21 -->
+      <circle cx="0" cy="154" r="4" fill="#555"/> <!-- 23 -->
+      <circle cx="0" cy="168" r="4" fill="#555"/> <!-- 25 -->
+      <circle cx="0" cy="182" r="4" fill="#555"/> <!-- 27 -->
+      <circle cx="0" cy="196" r="4" fill="#555"/> <!-- 29 -->
+      <circle cx="0" cy="210" r="4" fill="#555"/> <!-- 31 -->
+      <circle cx="0" cy="224" r="4" fill="#555"/> <!-- 33 -->
+
+      <!-- Pin 35 - GPIO19 DATA -->
+      <circle cx="0" cy="238" r="6" fill="#e74c3c" stroke="#fff" stroke-width="2"/>
+      <text x="-10" y="242" class="label-tiny" text-anchor="end" fill="#fff">DATA</text>
+
+      <circle cx="0" cy="252" r="4" fill="#555"/> <!-- 37 -->
+    </g>
+
+    <!-- Right column pins -->
+    <g transform="translate(138, 55)">
+      <!-- Pin 2 - 5V -->
+      <circle cx="0" cy="0" r="6" fill="#c0392b" stroke="#fff" stroke-width="2"/>
+      <text x="10" y="4" class="label-tiny" fill="#fff">5V</text>
+
+      <circle cx="0" cy="14" r="4" fill="#c0392b"/> <!-- 4 - 5V -->
+
+      <!-- Pin 6 - GND -->
+      <circle cx="0" cy="28" r="5" fill="#1a1a1a" stroke="#666" stroke-width="1"/>
+      <text x="10" y="32" class="label-tiny" fill="#fff">GND</text>
+
+      <circle cx="0" cy="42" r="4" fill="#555"/> <!-- 8 -->
+      <circle cx="0" cy="56" r="4" fill="#555"/> <!-- 10 -->
+      <circle cx="0" cy="70" r="4" fill="#555"/> <!-- 12 -->
+      <circle cx="0" cy="84" r="4" fill="#555"/> <!-- 14 -->
+      <circle cx="0" cy="98" r="4" fill="#555"/> <!-- 16 -->
+      <circle cx="0" cy="112" r="4" fill="#555"/> <!-- 18 -->
+      <circle cx="0" cy="126" r="4" fill="#555"/> <!-- 20 -->
+      <circle cx="0" cy="140" r="4" fill="#555"/> <!-- 22 -->
+      <circle cx="0" cy="154" r="4" fill="#555"/> <!-- 24 -->
+      <circle cx="0" cy="168" r="4" fill="#555"/> <!-- 26 -->
+      <circle cx="0" cy="182" r="4" fill="#555"/> <!-- 28 -->
+      <circle cx="0" cy="196" r="4" fill="#555"/> <!-- 30 -->
+      <circle cx="0" cy="210" r="4" fill="#555"/> <!-- 32 -->
+      <circle cx="0" cy="224" r="4" fill="#555"/> <!-- 34 -->
+
+      <!-- Pin 38 - GPIO20 CLOCK -->
+      <circle cx="0" cy="238" r="6" fill="#f39c12" stroke="#fff" stroke-width="2"/>
+      <text x="10" y="242" class="label-tiny" fill="#fff">CLK</text>
+
+      <!-- Pin 40 - GPIO21 LATCH -->
+      <circle cx="0" cy="252" r="6" fill="#27ae60" stroke="#fff" stroke-width="2"/>
+      <text x="10" y="256" class="label-tiny" fill="#fff">LATCH</text>
+    </g>
+  </g>
+
+  <!-- ==================== SHIFT REGISTER CHIP 1 ==================== -->
+  <g transform="translate(250, 120)">
+    <rect x="0" y="0" width="140" height="200" rx="4" fill="#1a1a1a" stroke="#333" stroke-width="2"/>
+    <ellipse cx="70" cy="0" rx="12" ry="6" fill="#333"/>
+    <circle cx="20" cy="20" r="5" fill="#444"/>
+    <text x="70" y="95" class="label-small" text-anchor="middle" fill="#aaa">SN74HC595</text>
+    <text x="70" y="112" class="chip-label" text-anchor="middle" fill="#98c379">CHIP 1</text>
+    <text x="70" y="126" class="label-tiny" text-anchor="middle" fill="#666">LEDs 1-8</text>
+
+    <!-- Left pins -->
+    <g transform="translate(-20, 25)">
+      <rect x="0" y="0" width="20" height="8" fill="#c9a227"/>
+      <text x="-5" y="7" class="chip-pin" text-anchor="end">1</text>
+      <text x="25" y="7" class="chip-label">QB</text>
+
+      <rect x="0" y="18" width="20" height="8" fill="#c9a227"/>
+      <text x="-5" y="25" class="chip-pin" text-anchor="end">2</text>
+      <text x="25" y="25" class="chip-label">QC</text>
+
+      <rect x="0" y="36" width="20" height="8" fill="#c9a227"/>
+      <text x="-5" y="43" class="chip-pin" text-anchor="end">3</text>
+      <text x="25" y="43" class="chip-label">QD</text>
+
+      <rect x="0" y="54" width="20" height="8" fill="#c9a227"/>
+      <text x="-5" y="61" class="chip-pin" text-anchor="end">4</text>
+      <text x="25" y="61" class="chip-label">QE</text>
+
+      <rect x="0" y="72" width="20" height="8" fill="#c9a227"/>
+      <text x="-5" y="79" class="chip-pin" text-anchor="end">5</text>
+      <text x="25" y="79" class="chip-label">QF</text>
+
+      <rect x="0" y="90" width="20" height="8" fill="#c9a227"/>
+      <text x="-5" y="97" class="chip-pin" text-anchor="end">6</text>
+      <text x="25" y="97" class="chip-label">QG</text>
+
+      <rect x="0" y="108" width="20" height="8" fill="#c9a227"/>
+      <text x="-5" y="115" class="chip-pin" text-anchor="end">7</text>
+      <text x="25" y="115" class="chip-label">QH</text>
+
+      <rect x="0" y="126" width="20" height="8" fill="#333" stroke="#666"/>
+      <text x="-5" y="133" class="chip-pin" text-anchor="end">8</text>
+      <text x="25" y="133" class="chip-label" fill="#888">GND</text>
+    </g>
+
+    <!-- Right pins -->
+    <g transform="translate(140, 25)">
+      <rect x="0" y="0" width="20" height="8" fill="#c0392b"/>
+      <text x="25" y="7" class="chip-pin">16</text>
+      <text x="-5" y="7" class="chip-label" text-anchor="end">VCC</text>
+
+      <rect x="0" y="18" width="20" height="8" fill="#c9a227"/>
+      <text x="25" y="25" class="chip-pin">15</text>
+      <text x="-5" y="25" class="chip-label" text-anchor="end">QA</text>
+
+      <rect x="0" y="36" width="20" height="8" fill="#e74c3c"/>
+      <text x="25" y="43" class="chip-pin">14</text>
+      <text x="-5" y="43" class="chip-label" text-anchor="end">SER</text>
+
+      <rect x="0" y="54" width="20" height="8" fill="#333" stroke="#666"/>
+      <text x="25" y="61" class="chip-pin">13</text>
+      <text x="-5" y="61" class="chip-label" text-anchor="end" fill="#888">OE</text>
+
+      <rect x="0" y="72" width="20" height="8" fill="#27ae60"/>
+      <text x="25" y="79" class="chip-pin">12</text>
+      <text x="-5" y="79" class="chip-label" text-anchor="end">RCLK</text>
+
+      <rect x="0" y="90" width="20" height="8" fill="#f39c12"/>
+      <text x="25" y="97" class="chip-pin">11</text>
+      <text x="-5" y="97" class="chip-label" text-anchor="end">SRCLK</text>
+
+      <rect x="0" y="108" width="20" height="8" fill="#c0392b"/>
+      <text x="25" y="115" class="chip-pin">10</text>
+      <text x="-5" y="115" class="chip-label" text-anchor="end">SRCLR</text>
+
+      <rect x="0" y="126" width="20" height="8" fill="#9b59b6"/>
+      <text x="25" y="133" class="chip-pin">9</text>
+      <text x="-5" y="133" class="chip-label" text-anchor="end">QH'</text>
+    </g>
+  </g>
+
+  <!-- ==================== SHIFT REGISTER CHIP 2 ==================== -->
+  <g transform="translate(480, 120)">
+    <rect x="0" y="0" width="140" height="200" rx="4" fill="#1a1a1a" stroke="#333" stroke-width="2"/>
+    <ellipse cx="70" cy="0" rx="12" ry="6" fill="#333"/>
+    <circle cx="20" cy="20" r="5" fill="#444"/>
+    <text x="70" y="95" class="label-small" text-anchor="middle" fill="#aaa">SN74HC595</text>
+    <text x="70" y="112" class="chip-label" text-anchor="middle" fill="#f39c12">CHIP 2</text>
+    <text x="70" y="126" class="label-tiny" text-anchor="middle" fill="#666">LEDs 9-16</text>
+
+    <!-- Left pins -->
+    <g transform="translate(-20, 25)">
+      <rect x="0" y="0" width="20" height="8" fill="#c9a227"/>
+      <rect x="0" y="18" width="20" height="8" fill="#c9a227"/>
+      <rect x="0" y="36" width="20" height="8" fill="#c9a227"/>
+      <rect x="0" y="54" width="20" height="8" fill="#c9a227"/>
+      <rect x="0" y="72" width="20" height="8" fill="#c9a227"/>
+      <rect x="0" y="90" width="20" height="8" fill="#c9a227"/>
+      <rect x="0" y="108" width="20" height="8" fill="#c9a227"/>
+      <rect x="0" y="126" width="20" height="8" fill="#333" stroke="#666"/>
+    </g>
+
+    <!-- Right pins -->
+    <g transform="translate(140, 25)">
+      <rect x="0" y="0" width="20" height="8" fill="#c0392b"/>
+      <rect x="0" y="18" width="20" height="8" fill="#c9a227"/>
+      <rect x="0" y="36" width="20" height="8" fill="#9b59b6"/>
+      <text x="-5" y="43" class="chip-label" text-anchor="end">SER</text>
+      <rect x="0" y="54" width="20" height="8" fill="#333" stroke="#666"/>
+      <rect x="0" y="72" width="20" height="8" fill="#27ae60"/>
+      <rect x="0" y="90" width="20" height="8" fill="#f39c12"/>
+      <rect x="0" y="108" width="20" height="8" fill="#c0392b"/>
+      <rect x="0" y="126" width="20" height="8" fill="#9b59b6"/>
+      <text x="-5" y="133" class="chip-label" text-anchor="end">QH'</text>
+    </g>
+  </g>
+
+  <!-- ==================== SHIFT REGISTER CHIP 3 ==================== -->
+  <g transform="translate(710, 120)">
+    <rect x="0" y="0" width="140" height="200" rx="4" fill="#1a1a1a" stroke="#333" stroke-width="2"/>
+    <ellipse cx="70" cy="0" rx="12" ry="6" fill="#333"/>
+    <circle cx="20" cy="20" r="5" fill="#444"/>
+    <text x="70" y="95" class="label-small" text-anchor="middle" fill="#aaa">SN74HC595</text>
+    <text x="70" y="112" class="chip-label" text-anchor="middle" fill="#3498db">CHIP 3</text>
+    <text x="70" y="126" class="label-tiny" text-anchor="middle" fill="#666">LEDs 17-24</text>
+
+    <!-- Left pins -->
+    <g transform="translate(-20, 25)">
+      <rect x="0" y="0" width="20" height="8" fill="#c9a227"/>
+      <rect x="0" y="18" width="20" height="8" fill="#c9a227"/>
+      <rect x="0" y="36" width="20" height="8" fill="#c9a227"/>
+      <rect x="0" y="54" width="20" height="8" fill="#c9a227"/>
+      <rect x="0" y="72" width="20" height="8" fill="#c9a227"/>
+      <rect x="0" y="90" width="20" height="8" fill="#c9a227"/>
+      <rect x="0" y="108" width="20" height="8" fill="#c9a227"/>
+      <rect x="0" y="126" width="20" height="8" fill="#333" stroke="#666"/>
+    </g>
+
+    <!-- Right pins -->
+    <g transform="translate(140, 25)">
+      <rect x="0" y="0" width="20" height="8" fill="#c0392b"/>
+      <rect x="0" y="18" width="20" height="8" fill="#c9a227"/>
+      <rect x="0" y="36" width="20" height="8" fill="#9b59b6"/>
+      <text x="-5" y="43" class="chip-label" text-anchor="end">SER</text>
+      <rect x="0" y="54" width="20" height="8" fill="#333" stroke="#666"/>
+      <rect x="0" y="72" width="20" height="8" fill="#27ae60"/>
+      <rect x="0" y="90" width="20" height="8" fill="#f39c12"/>
+      <rect x="0" y="108" width="20" height="8" fill="#c0392b"/>
+      <rect x="0" y="126" width="20" height="8" fill="#666"/>
+      <text x="-5" y="133" class="chip-label" text-anchor="end" fill="#888">QH'</text>
+      <text x="-5" y="145" class="label-tiny" text-anchor="end" fill="#666">(unused)</text>
+    </g>
+  </g>
+
+  <!-- ==================== DAISY CHAIN CONNECTIONS ==================== -->
+
+  <!-- QH' from Chip 1 to SER on Chip 2 -->
+  <path d="M 430 276 L 450 276 L 450 300 L 590 300 L 590 181 L 620 181" fill="none" stroke="#9b59b6" stroke-width="3" stroke-linecap="round"/>
+  <text x="520" y="315" class="wire-label" fill="#8e44ad">QH' → SER (chain)</text>
+
+  <!-- QH' from Chip 2 to SER on Chip 3 -->
+  <path d="M 660 276 L 680 276 L 680 300 L 820 300 L 820 181 L 850 181" fill="none" stroke="#9b59b6" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- ==================== PI TO CHIP 1 CONNECTIONS ==================== -->
+
+  <!-- DATA (Red) - GPIO19 to SER on Chip 1 -->
+  <path d="M 142 393 L 200 393 L 200 181 L 390 181" fill="none" stroke="#e74c3c" stroke-width="3" stroke-linecap="round"/>
+  <text x="280" y="175" class="wire-label" fill="#c0392b">DATA (GPIO19)</text>
+
+  <!-- CLOCK (Orange) - GPIO20 to SRCLK (shared) -->
+  <path d="M 168 393 L 210 393 L 210 240 L 390 240" fill="none" stroke="#f39c12" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 410 240 L 620 240" fill="none" stroke="#f39c12" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 640 240 L 850 240" fill="none" stroke="#f39c12" stroke-width="3" stroke-linecap="round"/>
+  <text x="280" y="255" class="wire-label" fill="#d68910">CLOCK (GPIO20) - shared</text>
+
+  <!-- LATCH (Green) - GPIO21 to RCLK (shared) -->
+  <path d="M 168 407 L 220 407 L 220 222 L 390 222" fill="none" stroke="#27ae60" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 410 222 L 620 222" fill="none" stroke="#27ae60" stroke-width="3" stroke-linecap="round"/>
+  <path d="M 640 222 L 850 222" fill="none" stroke="#27ae60" stroke-width="3" stroke-linecap="round"/>
+  <text x="450" y="218" class="wire-label" fill="#1e8449">LATCH (GPIO21) - shared</text>
+
+  <!-- ==================== POWER RAILS ==================== -->
+
+  <!-- 5V rail -->
+  <line x1="200" y1="80" x2="920" y2="80" stroke="#c0392b" stroke-width="4"/>
+  <text x="560" y="75" class="wire-label" fill="#922b21">5V POWER RAIL</text>
+
+  <!-- 5V from Pi -->
+  <path d="M 168 155 L 185 155 L 185 80" fill="none" stroke="#c0392b" stroke-width="3"/>
+  <circle cx="185" cy="80" r="4" fill="#c0392b"/>
+
+  <!-- 5V to VCC pins -->
+  <line x1="410" y1="80" x2="410" y2="145" stroke="#c0392b" stroke-width="3"/>
+  <circle cx="410" cy="80" r="4" fill="#c0392b"/>
+  <line x1="640" y1="80" x2="640" y2="145" stroke="#c0392b" stroke-width="3"/>
+  <circle cx="640" cy="80" r="4" fill="#c0392b"/>
+  <line x1="870" y1="80" x2="870" y2="145" stroke="#c0392b" stroke-width="3"/>
+  <circle cx="870" cy="80" r="4" fill="#c0392b"/>
+
+  <!-- 5V to SRCLR pins (active low, tie high) -->
+  <line x1="410" y1="80" x2="410" y2="100" stroke="#c0392b" stroke-width="2" stroke-dasharray="4,2"/>
+  <line x1="410" y1="100" x2="410" y2="258" stroke="#c0392b" stroke-width="2"/>
+  <line x1="640" y1="100" x2="640" y2="258" stroke="#c0392b" stroke-width="2"/>
+  <line x1="870" y1="100" x2="870" y2="258" stroke="#c0392b" stroke-width="2"/>
+
+  <!-- GND rail -->
+  <line x1="200" y1="350" x2="920" y2="350" stroke="#1a1a1a" stroke-width="4"/>
+  <text x="560" y="368" class="wire-label" fill="#333">GND RAIL</text>
+
+  <!-- GND from Pi -->
+  <path d="M 168 183 L 195 183 L 195 350" fill="none" stroke="#1a1a1a" stroke-width="3"/>
+  <circle cx="195" cy="350" r="4" fill="#1a1a1a"/>
+
+  <!-- GND to chip GND pins -->
+  <line x1="250" y1="350" x2="250" y2="276" stroke="#1a1a1a" stroke-width="3"/>
+  <circle cx="250" cy="350" r="4" fill="#1a1a1a"/>
+  <line x1="480" y1="350" x2="480" y2="276" stroke="#1a1a1a" stroke-width="3"/>
+  <circle cx="480" cy="350" r="4" fill="#1a1a1a"/>
+  <line x1="710" y1="350" x2="710" y2="276" stroke="#1a1a1a" stroke-width="3"/>
+  <circle cx="710" cy="350" r="4" fill="#1a1a1a"/>
+
+  <!-- GND to OE pins (active low, tie low to enable) -->
+  <line x1="410" y1="350" x2="410" y2="204" stroke="#1a1a1a" stroke-width="2"/>
+  <circle cx="410" cy="350" r="3" fill="#1a1a1a"/>
+  <line x1="640" y1="350" x2="640" y2="204" stroke="#1a1a1a" stroke-width="2"/>
+  <circle cx="640" cy="350" r="3" fill="#1a1a1a"/>
+  <line x1="870" y1="350" x2="870" y2="204" stroke="#1a1a1a" stroke-width="2"/>
+  <circle cx="870" cy="350" r="3" fill="#1a1a1a"/>
+
+  <!-- ==================== LED SECTION ==================== -->
+
+  <g transform="translate(30, 420)">
+    <rect x="0" y="0" width="940" height="180" rx="8" fill="#fff" stroke="#ccc" stroke-width="2"/>
+    <text x="470" y="25" class="section-title" text-anchor="middle">LED CONNECTIONS (from each output QA-QH)</text>
+
+    <!-- LED circuit diagram -->
+    <g transform="translate(50, 50)">
+      <!-- Single LED example -->
+      <text x="0" y="0" class="label-small" fill="#1a1a1a">OUTPUT PIN:</text>
+
+      <!-- Wire from chip -->
+      <line x1="100" y1="-5" x2="140" y2="-5" stroke="#c9a227" stroke-width="3"/>
+      <text x="120" y="15" class="label-tiny" text-anchor="middle" fill="#666">QA-QH</text>
+
+      <!-- Resistor -->
+      <rect x="140" y="-10" width="40" height="10" fill="#e8d4a8" stroke="#333" stroke-width="1"/>
+      <text x="160" y="20" class="label-tiny" text-anchor="middle" fill="#1a1a1a">220Ω</text>
+
+      <!-- Wire to LED -->
+      <line x1="180" y1="-5" x2="200" y2="-5" stroke="#666" stroke-width="2"/>
+
+      <!-- LED symbol -->
+      <polygon points="200,-15 200,5 225,-5" fill="#e74c3c" stroke="#a93226" stroke-width="1"/>
+      <line x1="225" y1="-15" x2="225" y2="5" stroke="#a93226" stroke-width="2"/>
+
+      <!-- Wire to GND -->
+      <line x1="225" y1="-5" x2="280" y2="-5" stroke="#666" stroke-width="2"/>
+
+      <!-- GND symbol -->
+      <line x1="280" y1="-15" x2="280" y2="5" stroke="#1a1a1a" stroke-width="2"/>
+      <line x1="275" y1="-12" x2="285" y2="-12" stroke="#1a1a1a" stroke-width="2"/>
+      <line x1="277" y1="-8" x2="283" y2="-8" stroke="#1a1a1a" stroke-width="1"/>
+      <line x1="279" y1="-4" x2="281" y2="-4" stroke="#1a1a1a" stroke-width="1"/>
+      <text x="280" y="20" class="label-tiny" text-anchor="middle" fill="#333">GND</text>
+
+      <!-- Formula -->
+      <text x="320" y="0" class="label-small" fill="#555">R = (5V - 2V) / 15mA ≈ 220Ω</text>
+    </g>
+
+    <!-- LED output assignments -->
+    <g transform="translate(50, 100)">
+      <rect x="0" y="0" width="260" height="60" rx="4" fill="#f0fff0" stroke="#98c379" stroke-width="1"/>
+      <text x="130" y="18" class="label-small" text-anchor="middle" fill="#1e5631" font-weight="bold">CHIP 1 (LEDs 1-8)</text>
+      <text x="130" y="38" class="label-tiny" text-anchor="middle" fill="#333">QA=LED1, QB=LED2, ... QH=LED8</text>
+      <text x="130" y="52" class="label-tiny" text-anchor="middle" fill="#666">First byte shifted out</text>
+    </g>
+
+    <g transform="translate(330, 100)">
+      <rect x="0" y="0" width="260" height="60" rx="4" fill="#fffaf0" stroke="#f39c12" stroke-width="1"/>
+      <text x="130" y="18" class="label-small" text-anchor="middle" fill="#7d5a00" font-weight="bold">CHIP 2 (LEDs 9-16)</text>
+      <text x="130" y="38" class="label-tiny" text-anchor="middle" fill="#333">QA=LED9, QB=LED10, ... QH=LED16</text>
+      <text x="130" y="52" class="label-tiny" text-anchor="middle" fill="#666">Second byte shifted out</text>
+    </g>
+
+    <g transform="translate(610, 100)">
+      <rect x="0" y="0" width="260" height="60" rx="4" fill="#f0f8ff" stroke="#3498db" stroke-width="1"/>
+      <text x="130" y="18" class="label-small" text-anchor="middle" fill="#1a4d80" font-weight="bold">CHIP 3 (LEDs 17-24)</text>
+      <text x="130" y="38" class="label-tiny" text-anchor="middle" fill="#333">QA=LED17, QB=LED18, ... QH=LED24</text>
+      <text x="130" y="52" class="label-tiny" text-anchor="middle" fill="#666">Third byte shifted out</text>
+    </g>
+  </g>
+
+  <!-- ==================== PIN MAPPING AND NOTES ==================== -->
+
+  <g transform="translate(30, 620)">
+    <rect x="0" y="0" width="450" height="200" rx="8" fill="#fff" stroke="#bbb" stroke-width="2"/>
+    <text x="225" y="25" class="label" text-anchor="middle" font-weight="bold" fill="#1a1a1a">PIN MAPPING</text>
+
+    <!-- Table -->
+    <g transform="translate(20, 45)">
+      <rect x="0" y="0" width="100" height="20" fill="#eee" stroke="#ccc"/>
+      <text x="50" y="14" class="label-small" text-anchor="middle" font-weight="bold">SIGNAL</text>
+
+      <rect x="100" y="0" width="100" height="20" fill="#eee" stroke="#ccc"/>
+      <text x="150" y="14" class="label-small" text-anchor="middle" font-weight="bold">595 PIN</text>
+
+      <rect x="200" y="0" width="80" height="20" fill="#eee" stroke="#ccc"/>
+      <text x="240" y="14" class="label-small" text-anchor="middle" font-weight="bold">PI GPIO</text>
+
+      <rect x="280" y="0" width="60" height="20" fill="#eee" stroke="#ccc"/>
+      <text x="310" y="14" class="label-small" text-anchor="middle" font-weight="bold">PI PIN</text>
+
+      <rect x="340" y="0" width="70" height="20" fill="#eee" stroke="#ccc"/>
+      <text x="375" y="14" class="label-small" text-anchor="middle" font-weight="bold">COLOR</text>
+    </g>
+
+    <!-- DATA row -->
+    <g transform="translate(20, 65)">
+      <rect x="0" y="0" width="100" height="18" fill="#fff" stroke="#ddd"/>
+      <text x="50" y="13" class="label-small" text-anchor="middle">DATA</text>
+      <rect x="100" y="0" width="100" height="18" fill="#fff" stroke="#ddd"/>
+      <text x="150" y="13" class="label-small" text-anchor="middle">14 (SER)</text>
+      <rect x="200" y="0" width="80" height="18" fill="#fff" stroke="#ddd"/>
+      <text x="240" y="13" class="label-small" text-anchor="middle">GPIO19</text>
+      <rect x="280" y="0" width="60" height="18" fill="#fff" stroke="#ddd"/>
+      <text x="310" y="13" class="label-small" text-anchor="middle">35</text>
+      <rect x="340" y="0" width="70" height="18" fill="#fff" stroke="#ddd"/>
+      <rect x="360" y="3" width="30" height="12" fill="#e74c3c" rx="2"/>
+    </g>
+
+    <!-- CLOCK row -->
+    <g transform="translate(20, 83)">
+      <rect x="0" y="0" width="100" height="18" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="50" y="13" class="label-small" text-anchor="middle">CLOCK</text>
+      <rect x="100" y="0" width="100" height="18" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="150" y="13" class="label-small" text-anchor="middle">11 (SRCLK)</text>
+      <rect x="200" y="0" width="80" height="18" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="240" y="13" class="label-small" text-anchor="middle">GPIO20</text>
+      <rect x="280" y="0" width="60" height="18" fill="#f9f9f9" stroke="#ddd"/>
+      <text x="310" y="13" class="label-small" text-anchor="middle">38</text>
+      <rect x="340" y="0" width="70" height="18" fill="#f9f9f9" stroke="#ddd"/>
+      <rect x="360" y="3" width="30" height="12" fill="#f39c12" rx="2"/>
+    </g>
+
+    <!-- LATCH row -->
+    <g transform="translate(20, 101)">
+      <rect x="0" y="0" width="100" height="18" fill="#fff" stroke="#ddd"/>
+      <text x="50" y="13" class="label-small" text-anchor="middle">LATCH</text>
+      <rect x="100" y="0" width="100" height="18" fill="#fff" stroke="#ddd"/>
+      <text x="150" y="13" class="label-small" text-anchor="middle">12 (RCLK)</text>
+      <rect x="200" y="0" width="80" height="18" fill="#fff" stroke="#ddd"/>
+      <text x="240" y="13" class="label-small" text-anchor="middle">GPIO21</text>
+      <rect x="280" y="0" width="60" height="18" fill="#fff" stroke="#ddd"/>
+      <text x="310" y="13" class="label-small" text-anchor="middle">40</text>
+      <rect x="340" y="0" width="70" height="18" fill="#fff" stroke="#ddd"/>
+      <rect x="360" y="3" width="30" height="12" fill="#27ae60" rx="2"/>
+    </g>
+
+    <!-- Fixed connections -->
+    <g transform="translate(20, 130)">
+      <text x="0" y="14" class="label-small" fill="#1a1a1a" font-weight="bold">FIXED CONNECTIONS (all 3 chips):</text>
+      <text x="0" y="34" class="label-small" fill="#555">VCC (16) → 5V     |  GND (8) → GND</text>
+      <text x="0" y="50" class="label-small" fill="#555">SRCLR (10) → 5V   |  OE (13) → GND</text>
+      <text x="0" y="66" class="label-small" fill="#666">(SRCLR=high keeps data, OE=low enables output)</text>
+    </g>
+  </g>
+
+  <!-- Notes box -->
+  <g transform="translate(500, 620)">
+    <rect x="0" y="0" width="470" height="200" rx="8" fill="#fff" stroke="#bbb" stroke-width="2"/>
+    <text x="235" y="25" class="label" text-anchor="middle" font-weight="bold" fill="#1a1a1a">IMPORTANT NOTES</text>
+
+    <g transform="translate(20, 45)">
+      <rect x="0" y="0" width="430" height="65" rx="4" fill="#fff3cd" stroke="#ffc107" stroke-width="1"/>
+      <text x="10" y="18" class="label-small" fill="#856404" font-weight="bold">⚠ CURRENT LIMITS</text>
+      <text x="10" y="36" class="label-small" fill="#856404">• Max 35mA per output pin</text>
+      <text x="10" y="52" class="label-small" fill="#856404">• Max 70mA total per chip (all outputs combined)</text>
+    </g>
+
+    <g transform="translate(20, 120)">
+      <rect x="0" y="0" width="430" height="65" rx="4" fill="#f0f8ff" stroke="#3498db" stroke-width="1"/>
+      <text x="10" y="18" class="label-small" fill="#1a4d80" font-weight="bold">SHIFT ORDER</text>
+      <text x="10" y="36" class="label-small" fill="#333">Data shifts through: Chip1 → Chip2 → Chip3</text>
+      <text x="10" y="52" class="label-small" fill="#333">Send 3 bytes: [Chip3 data][Chip2 data][Chip1 data]</text>
+    </g>
+  </g>
+
+  <!-- Footer -->
+  <text x="500" y="840" class="label-small" text-anchor="middle" fill="#666">
+    Pulse LATCH (RCLK) after shifting all 24 bits to update all outputs simultaneously.
+  </text>
+</svg>
